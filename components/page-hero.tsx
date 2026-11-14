@@ -71,7 +71,7 @@ export function PageHero({
                 className={cn(
                   'max-w-[20ch] font-display text-[clamp(2.1rem,4.6vw,3.75rem)] font-semibold leading-[1.02] tracking-[-0.034em]',
                   dark ? 'text-platinum' : 'text-slate',
-                  badge && 'mt-5 sm:mt-6',
+                  Boolean(badge) && 'mt-5 sm:mt-6',
                 )}
               >
                 {title}
