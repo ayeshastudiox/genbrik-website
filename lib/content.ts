@@ -1,7 +1,8 @@
 /**
  * Content model for the site.
  *
- * Every service name below comes from spec §1.2 / §1.3. Descriptions are
+ * Every service name below comes from spec §1.2 / §1.3 or the approved service
+ * update. Descriptions are
  * service descriptions only — no clients, statistics, certifications,
  * locations or licensing claims are invented anywhere in this file.
  *
@@ -26,6 +27,8 @@ export type IconName =
   | 'wallet'
   | 'shopping-bag'
   | 'cpu'
+  | 'circuit-board'
+  | 'cctv'
   | 'rocket'
   | 'store'
   | 'building'
@@ -65,6 +68,55 @@ export type NavMenu = {
   columns: Array<{ title: string; items: NavItem[] }>
   footer: { label: string; href: string }
 }
+
+export type ServicePresentation = {
+  id: string
+  name: string
+  line: string
+  description: string
+  icon: IconName
+}
+
+/**
+ * The four chip, robotics and surveillance service lines.
+ *
+ * Descriptions stay at the level of the service: no hardware specifications,
+ * manufacturing claims, certifications or performance figures are implied.
+ */
+export const chipsRoboticsServices: ServicePresentation[] = [
+  {
+    id: 'chips',
+    name: 'Chips',
+    line: 'Chip-focused systems for AI and intelligent applications.',
+    description:
+      'Chip-related technology services for AI and intelligent systems, scoped around the application and the software it connects to.',
+    icon: 'cpu',
+  },
+  {
+    id: 'robot-chips',
+    name: 'Robot Chips',
+    line: 'Control and compute layers for robotic systems.',
+    description:
+      "Chip and control-layer services for robotic systems, connecting hardware behaviour with GENBRIK's software and AI engineering.",
+    icon: 'circuit-board',
+  },
+  {
+    id: 'robots',
+    name: 'Robots',
+    line: 'Robotic systems built into operational workflows.',
+    description:
+      'Robotic systems integrated into operational workflows, with the software, controls and review points that surround them.',
+    icon: 'bot',
+  },
+  {
+    id: 'ai-surveillance',
+    name: 'AI Surveillance',
+    line: 'AI-assisted monitoring with human review.',
+    description:
+      'AI-assisted surveillance systems for monitoring environments, designed with defined review points and clear data-handling boundaries.',
+    icon: 'cctv',
+  },
+]
 
 /* -------------------------------------------------------------------------- */
 /* Division one — AI & Future Tech (spec §1.2)                                */
@@ -160,6 +212,13 @@ export const futureTechCategories: ServiceCategory[] = [
       'Smart manufacturing',
       'AI-powered robotic systems',
     ],
+  },
+  {
+    id: 'chips-robotics-ai-surveillance',
+    name: 'Chips, Robotics & AI Surveillance',
+    description:
+      "Four connected service lines that extend GENBRIK's AI engineering into chips, robot chips, robots and AI surveillance — scoped as services alongside the rest of the practice.",
+    services: chipsRoboticsServices.map((service) => service.name),
   },
   {
     id: 'agi',
@@ -572,6 +631,11 @@ export const navMenus: Record<'future-tech' | 'bpo', NavMenu> = {
             name: 'Robotics & Humanoid Technology',
             href: '/future-tech#robotics',
             description: 'Humanoid, service and industrial systems',
+          },
+          {
+            name: 'Chips, Robotics & AI Surveillance',
+            href: '/future-tech#chips-robotics-ai-surveillance',
+            description: 'Chips · Robot Chips · Robots · AI Surveillance',
           },
           {
             name: 'AGI & Future Intelligence',

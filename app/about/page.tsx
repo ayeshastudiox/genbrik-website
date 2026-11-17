@@ -226,7 +226,8 @@ export default function AboutPage() {
               <div className="mt-10">
                 <h3 className="font-display text-[20px] font-medium text-slate">Leadership</h3>
                 <p className="mt-3 max-w-[58ch] text-[13.5px] leading-relaxed text-slate-muted">
-                  GENBRIK is led by Mr. Akash Gill, Chief Executive Officer, across both divisions.
+                  GENBRIK is led by Mr. Akash Gill, Chief Executive Officer, with Ayesha Adnan
+                  heading AI &amp; Technology and Abdullah Abbasi serving as Chairman.
                 </p>
               </div>
             </div>

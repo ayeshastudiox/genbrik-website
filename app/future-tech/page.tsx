@@ -10,14 +10,14 @@ import { Badge } from '@/components/ui/badge'
 import { ButtonLink } from '@/components/ui/button'
 import { Container } from '@/components/ui/container'
 import { Section } from '@/components/ui/section'
-import { futureTechCategories } from '@/lib/content'
+import { chipsRoboticsServices, futureTechCategories } from '@/lib/content'
 import type { IconName } from '@/lib/content'
 import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = buildMetadata({
   title: 'AI & Future Tech',
   description:
-    'GENBRIK AI & Future Tech builds AI systems, AI agents, intelligent automation, web applications and custom software — including robotics, AGI and emerging technology work.',
+    'GENBRIK AI & Future Tech builds AI systems, AI agents, intelligent automation, web applications, custom software, chips, robotics and AI surveillance — alongside AGI and emerging technology work.',
   path: '/future-tech',
 })
 
@@ -83,7 +83,15 @@ function CapabilityStack() {
   )
 }
 
-const capabilityChips = ['Generative AI', 'AI agents', 'Automation', 'Software', 'Robotics']
+const capabilityChips = [
+  'Generative AI',
+  'AI agents',
+  'Automation',
+  'Software',
+  'Robotics',
+  'Chips',
+  'AI Surveillance',
+]
 
 export default function FutureTechPage() {
   return (
@@ -92,7 +100,7 @@ export default function FutureTechPage() {
         sweep
         badge={<Badge>AI &amp; intelligent systems</Badge>}
         title={<>AI systems, agents and software built to run in production.</>}
-        intro="AI is the core of this division. We build generative AI, agents and intelligent automation into real workflows — then the software, web platforms and infrastructure around them."
+        intro="AI is the core of this division. We build generative AI, agents and intelligent automation into real workflows — then the software, web platforms and infrastructure around them. Chips, robotics and AI surveillance extend that engineering into physical systems."
         actions={
           <>
             <ButtonLink href="/contact" size="lg" tone="dark">
@@ -170,8 +178,8 @@ export default function FutureTechPage() {
                   Capabilities
                 </h2>
                 <p className="mt-4 text-[14px] leading-relaxed text-silver/50">
-                  Seven service areas, each with a defined deliverable. Project-based engagements end
-                  with a handover; retained engagements continue into support.
+                  Eight service areas, each with a defined deliverable. Project-based engagements
+                  end with a handover; retained engagements continue into support.
                 </p>
               </div>
               <Link
@@ -209,20 +217,56 @@ export default function FutureTechPage() {
                     </div>
 
                     <div className="lg:col-span-7">
-                      <ul className="grid gap-x-10 sm:grid-cols-2">
-                        {category.services.slice(0, 8).map((service) => (
-                          <li
-                            key={service}
-                            className="flex items-center gap-3 border-b border-white/[0.06] py-2.5 text-[12.5px] leading-snug text-silver/55"
-                          >
-                            <span
-                              aria-hidden
-                              className="h-[3px] w-[3px] shrink-0 rotate-45 bg-silver/30"
-                            />
-                            {service}
-                          </li>
-                        ))}
-                      </ul>
+                      {category.id === 'chips-robotics-ai-surveillance' ? (
+                        <div className="grid gap-3 sm:grid-cols-2">
+                          {chipsRoboticsServices.map((service) => (
+                            <article
+                              key={service.id}
+                              id={service.id}
+                              className="panel-glass scroll-mt-28 rounded-panel p-5"
+                            >
+                              <div className="flex items-center justify-between gap-3">
+                                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/[0.04]">
+                                  <Icon
+                                    name={service.icon}
+                                    className="h-4 w-4 text-silver/80"
+                                  />
+                                </span>
+                                <span className="text-[9px] uppercase tracking-[0.18em] text-silver/25">
+                                  GENBRIK
+                                </span>
+                              </div>
+                              <h4 className="mt-4 font-display text-[17px] font-medium leading-snug text-platinum">
+                                {service.name}
+                              </h4>
+                              <p className="mt-2 text-[12px] leading-relaxed text-silver/45">
+                                {service.description}
+                              </p>
+                              <Link
+                                href="/contact"
+                                className="mt-4 inline-flex min-h-9 items-center text-[11.5px] font-medium text-silver/70 transition-colors hover:text-platinum sm:min-h-0"
+                              >
+                                <span className="link-underline">Discuss this service</span>
+                              </Link>
+                            </article>
+                          ))}
+                        </div>
+                      ) : (
+                        <ul className="grid gap-x-10 sm:grid-cols-2">
+                          {category.services.slice(0, 8).map((service) => (
+                            <li
+                              key={service}
+                              className="flex items-center gap-3 border-b border-white/[0.06] py-2.5 text-[12.5px] leading-snug text-silver/55"
+                            >
+                              <span
+                                aria-hidden
+                                className="h-[3px] w-[3px] shrink-0 rotate-45 bg-silver/30"
+                              />
+                              {service}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
                   </div>
                 </article>

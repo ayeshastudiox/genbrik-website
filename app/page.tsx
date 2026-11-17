@@ -22,7 +22,7 @@ export const metadata: Metadata = buildMetadata({
   title: 'GENBRIK — Technology we build. Operations we run.',
   absoluteTitle: true,
   description:
-    'GENBRIK is an AI and technology company: AI & Future Tech builds generative AI, agents, intelligent automation, software and web platforms; BPO & Professional Services runs medical billing, DME, staffing and back-office operations.',
+    'GENBRIK is an AI and technology company: AI & Future Tech builds generative AI, agents, intelligent automation, software, web platforms, chips, robotics and AI surveillance; BPO & Professional Services runs medical billing, DME, staffing and back-office operations.',
   path: '/',
 })
 
@@ -31,6 +31,10 @@ const marqueeItems = [
   'AI agents',
   'Web development',
   'Custom software',
+  'Chips',
+  'Robot Chips',
+  'Robots',
+  'AI Surveillance',
   'Medical billing & RCM',
   'DME services',
   'Medicare & insurance support',
@@ -46,6 +50,10 @@ const divisionServices = {
     'Generative AI & LLM systems',
     'AI agents & automation',
     'Software & web platforms',
+    'Chips',
+    'Robot Chips',
+    'Robots',
+    'AI Surveillance',
     'Robotics, AGI & emerging tech',
   ],
   bpo: [

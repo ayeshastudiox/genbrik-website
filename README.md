@@ -12,23 +12,31 @@ codebase.
 
 ### Supplied assets
 
-Both supplied images are committed in the project and served as-is:
+The supplied brand and leadership images are served from these paths:
 
 | File | Used by |
 |---|---|
 | `public/brand/genbrik-logo.png` | `components/logo.tsx` — nav, mobile overlay, footer |
-| `public/images/ceo-akash-gill.jpg` | `components/leadership.tsx` — home + about |
+| `public/images/ceo-akash-gill.png` | `components/leadership.tsx` — home + about |
+| `public/images/ayesha-adnan.png` | `components/leadership.tsx` — home + about |
 
-They were copied byte-for-byte from the supplied files (transparent logo
-588×600, portrait 1254×1254), not re-encoded or redrawn.
+They are copied byte-for-byte from the supplied files by `npm run sync:assets`;
+no re-encoding or redrawing.
 
 The logo is rendered directly with no plate or background. On dark surfaces it
 is inverted to platinum so the black artwork stays visible; the footer (paper)
 shows the original colours.
 
-`lib/setup-assets.ts` is a one-time bootstrap that copies the two originals in
-from the desktop attachment cache on first render. It is a no-op once the files
-exist and can be deleted (together with its call in `app/layout.tsx`).
+`lib/setup-assets.ts` is a one-time bootstrap that copies the originals in from
+their local source paths on first render. It is a no-op once the files exist
+and can be deleted (together with its call in `app/layout.tsx`). If the source
+files are not present (CI, a clean clone, production), the committed files under
+`public` are used.
+
+On the source machine, `npm run sync:assets` performs the same copy explicitly
+and prints the size and SHA-256 prefix of each portrait. Run it once, verify the
+two files under `public/images/`, then commit them. A deployment build does not
+need the local Downloads paths once those files are committed.
 
 ---
 
@@ -123,8 +131,8 @@ npm run typecheck
 ### Pages
 - [ ] `/` hero: move the mouse — the metallic sweep follows the cursor on
       desktop; on touch the sweep drifts slowly.
-- [ ] `/future-tech` — four capability cards + the dimmer
-      **Research & Exploration** block with no primary CTAs.
+- [ ] `/future-tech` — eight service areas, including the dedicated
+      **Chips, Robot Chips, Robots and AI Surveillance** service cards.
 - [ ] `/future-tech/ai-automation` — the node graph animates, nodes highlight on
       hover, caption says it is illustrative.
 - [ ] `/future-tech/web-software` — light, conventional service menu with
@@ -209,7 +217,8 @@ components/
   metal-sweep.tsx                 cursor-reactive specular metal
   spotlight.tsx                   pointer-following glass highlight
   marquee.tsx                     CSS service marquee
-  service-showcase.tsx            interactive service index + live preview
+  flagship-showcase.tsx           homepage service showcase
+  leadership.tsx                  CEO, Head of AI & Technology and Chairman profiles
   node-field.tsx                  scroll- and pointer-reactive node mesh
   agent-graph.tsx                 illustrative agent workflow diagram
   process-steps.tsx  industry-grid.tsx  route-progress.tsx  contact-form.tsx
@@ -249,7 +258,9 @@ published contact channel is `info@genbrik.com`.
 
 Deliberately **not** on the site: invented clients, logos, testimonials, case
 studies, certifications, office locations, founding dates, headcount, or any
-claim that robotics/AGI/emerging-tech work is commercially available.
+claim that AGI or emerging-tech research is commercially available. Chips,
+Robot Chips, Robots and AI Surveillance are presented as services alongside the
+existing offering.
 
 ---
 
@@ -265,7 +276,9 @@ claim that robotics/AGI/emerging-tech work is commercially available.
    `components/logo.tsx`.
 6. Move General Sans to `next/font/local` once licensed `.woff2` files are in
    the repo (it currently loads from Fontshare).
-7. Deploy to Vercel, add `genbrik.com` in project settings, point DNS at Vercel
+7. Run `npm run sync:assets` and commit
+   `public/images/ceo-akash-gill.png` and `public/images/ayesha-adnan.png`.
+8. Deploy to Vercel, add `genbrik.com` in project settings, point DNS at Vercel
    — SSL is issued automatically.
 
 ---

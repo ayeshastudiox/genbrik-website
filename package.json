@@ -8,7 +8,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "sync:assets": "node scripts/sync-assets.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

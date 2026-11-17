@@ -13,7 +13,7 @@ export const siteConfig = {
   email: contactEmail,
   tagline: 'Technology we build. Operations we run.',
   description:
-    'GENBRIK is an AI and technology company with two divisions: AI & Future Tech builds AI systems, agents, automation, software and web applications; BPO & Professional Services runs medical billing, DME, insurance support, staffing and back-office operations.',
+    'GENBRIK is an AI and technology company with two divisions: AI & Future Tech builds AI systems, agents, automation, software, web applications, chips, robotics and AI surveillance; BPO & Professional Services runs medical billing, DME, insurance support, staffing and back-office operations.',
   routes: [
     { path: '/', priority: 1, changeFrequency: 'monthly' as const },
     { path: '/future-tech', priority: 0.9, changeFrequency: 'monthly' as const },

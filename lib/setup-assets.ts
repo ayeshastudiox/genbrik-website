@@ -2,15 +2,15 @@ import { access, copyFile, mkdir } from 'node:fs/promises'
 import path from 'node:path'
 
 /**
- * One-time bootstrap for the two supplied images.
+ * One-time bootstrap for the supplied images.
  *
- * The supplied artwork arrives in the desktop app's attachment cache, outside
- * the project. On the first server render we copy the exact bytes into
+ * The supplied artwork arrives outside the project. On the first server render
+ * we copy the exact bytes into
  * `/public` so the site serves the original files — no re-encoding, no
  * reconstruction. If the sources are absent (CI, a clean clone, production),
  * this is a no-op and the committed files under /public are used.
  *
- * Delete this module (and its call in app/layout.tsx) once the two files are
+ * Delete this module (and its call in app/layout.tsx) once the files are
  * committed and you no longer need the bootstrap.
  */
 const SUPPLIED_ASSETS: Array<{ source: string; destination: string }> = [
@@ -25,9 +25,12 @@ const SUPPLIED_ASSETS: Array<{ source: string; destination: string }> = [
     destination: 'public/brand/genbrik-logo.png',
   },
   {
-    source:
-      'C:/Users/MULTILINE LAPTOP/AppData/Roaming/dsh-desktop/harness/attachments/v1/objects/ee/eee2f4fe47e6496770018b102d4b4c6323207aca6f065f1478b3f702cd7731be',
-    destination: 'public/images/ceo-akash-gill.jpg',
+    source: 'C:/Users/MULTILINE LAPTOP/Downloads/akah gill.png',
+    destination: 'public/images/ceo-akash-gill.png',
+  },
+  {
+    source: 'C:/Users/MULTILINE LAPTOP/Downloads/ayesha-genbrik.png',
+    destination: 'public/images/ayesha-adnan.png',
   },
 ]
 

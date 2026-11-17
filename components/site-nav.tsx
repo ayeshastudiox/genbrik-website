@@ -342,7 +342,7 @@ export function SiteNav() {
                 <span>{navMenus[openMenu].label}</span>
                 <span>
                   {openMenu === 'future-tech'
-                    ? 'AI · agents · automation · software · robotics'
+                    ? 'AI · agents · software · chips · robotics · surveillance'
                     : 'Healthcare · insurance · real estate · back office'}
                 </span>
               </div>
