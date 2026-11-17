@@ -173,7 +173,7 @@ export function Leadership() {
                 </div>
               </article>
 
-              {/* Abdullah Abbasi — text-led, with the monogram as the media panel. */}
+              {/* Chairman — monogram-only profile. */}
               <article className="relative h-full overflow-hidden rounded-feature border border-white/10 bg-[#0B0B0E] md:min-h-[320px] lg:min-h-[380px] xl:min-h-[360px]">
                 <div className="grid h-full md:grid-cols-[minmax(0,0.86fr)_1.14fr]">
                   <div className="relative flex aspect-[4/5] items-center justify-center overflow-hidden border-b border-white/10 sm:aspect-[16/9] md:aspect-auto md:border-b-0 md:border-r">
@@ -194,28 +194,16 @@ export function Leadership() {
                         AA
                       </span>
                     </div>
-
-                    <span className="chip absolute left-4 top-4 sm:left-5 sm:top-5">Chairman</span>
-                    <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
-                      <p className="text-[10px] text-silver/40">GENBRIK</p>
-                    </div>
                   </div>
 
-                  <div className="flex min-w-0 flex-col justify-center p-5 sm:p-6 lg:p-7">
-                    <p className="text-[10.5px] uppercase tracking-[0.2em] text-silver/30">
-                      GENBRIK
-                    </p>
-                    <h3 className="mt-3 font-display text-[clamp(1.5rem,2.4vw,1.8rem)] font-medium leading-tight tracking-[-0.02em] text-platinum">
-                      ABDULLAH ABBASI
+                  <div className="flex min-w-0 flex-col items-center justify-center p-5 text-center sm:p-6 lg:p-7">
+                    <h3 className="font-display text-[clamp(2rem,3.4vw,2.6rem)] font-medium leading-none tracking-[-0.04em] text-platinum">
+                      Chairman
                     </h3>
-                    <p className="mt-1.5 text-[12.5px] text-silver/55">Chairman</p>
-
-                    <div className="mt-5 h-px w-16 bg-[linear-gradient(90deg,rgba(232,233,237,0.5),transparent)]" />
-
-                    <span className="mt-6 inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-silver/20">
-                      <span aria-hidden className="h-px w-6 bg-silver/20" />
-                      GENBRIK leadership
-                    </span>
+                    <div
+                      aria-hidden
+                      className="mt-5 h-px w-16 bg-[linear-gradient(90deg,transparent,rgba(232,233,237,0.55),transparent)]"
+                    />
                   </div>
                 </div>
               </article>
