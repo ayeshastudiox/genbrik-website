@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og'
 
-export const alt = 'GENBRIK — Technology we build. Operations we run.'
+export const alt = 'GENBRIK — AI, Technology & Robotics'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -56,10 +56,10 @@ export default function OpengraphImage() {
             }}
           >
             <span>Technology we build.</span>
-            <span style={{ color: '#B9BCC4' }}>Operations we run.</span>
+            <span style={{ color: '#B9BCC4' }}>Intelligence we engineer.</span>
           </div>
           <div style={{ display: 'flex', fontSize: 19, color: '#8B8E96', marginTop: 30 }}>
-            AI &amp; Future Tech · BPO &amp; Professional Services
+            AI · Robotics · Chips · Surveillance
           </div>
         </div>
 
@@ -74,8 +74,8 @@ export default function OpengraphImage() {
             color: '#5B5C63',
           }}
         >
-          <span>AI · software · web</span>
-          <span>Billing · staffing · back office</span>
+          <span>AI · software · robotics</span>
+          <span>Chips · surveillance · automation</span>
         </div>
       </div>
     ),

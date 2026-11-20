@@ -19,48 +19,42 @@ import { Section } from '@/components/ui/section'
 import { processSteps, valueProps } from '@/lib/content'
 
 export const metadata: Metadata = buildMetadata({
-  title: 'GENBRIK — Technology we build. Operations we run.',
+  title: 'GENBRIK — AI, Technology & Robotics',
   absoluteTitle: true,
   description:
-    'GENBRIK is an AI and technology company: AI & Future Tech builds generative AI, agents, intelligent automation, software, web platforms, chips, robotics and AI surveillance; BPO & Professional Services runs medical billing, DME, staffing and back-office operations.',
+    'GENBRIK is an AI-first technology company building intelligent systems, AI software, automation, robotics, chips and AI surveillance.',
   path: '/',
 })
 
 const marqueeItems = [
   'AI & generative AI',
   'AI agents',
-  'Web development',
-  'Custom software',
+  'Intelligent systems',
+  'AI-powered software',
+  'AI automation',
   'Chips',
+  'AI chips',
   'Robot Chips',
   'Robots',
+  'Robotics',
   'AI Surveillance',
-  'Medical billing & RCM',
-  'DME services',
-  'Medicare & insurance support',
-  'Healthcare staffing',
-  'Auto insurance BPO',
-  'Real estate BPO',
-  'Finance & accounting',
-  'E-commerce support',
+  'Computer vision',
+  'Automation',
+  'Future technology',
 ]
 
-const divisionServices = {
-  futureTech: [
+const technologyServices = {
+  intelligence: [
     'Generative AI & LLM systems',
     'AI agents & automation',
-    'Software & web platforms',
-    'Chips',
-    'Robot Chips',
-    'Robots',
-    'AI Surveillance',
-    'Robotics, AGI & emerging tech',
+    'AI-powered software',
+    'Intelligent automation',
   ],
-  bpo: [
-    'Medical billing & RCM',
-    'DME & insurance support',
-    'Healthcare staffing',
-    'Back-office operations',
+  applied: [
+    'Robots & robotic systems',
+    'Robot Chips',
+    'Chips & semiconductor technology',
+    'AI Surveillance',
   ],
 }
 
@@ -83,31 +77,37 @@ export default function HomePage() {
                     <span className="absolute inline-flex h-full w-full animate-pulse-soft rounded-full bg-platinum" />
                     <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-platinum" />
                   </span>
-                  Two divisions. AI at the core.
+                  AI · Robotics · Chips · Surveillance
                 </div>
               </StaggerItem>
 
               <StaggerItem>
                 <h1 className="mt-6 font-display text-hero font-semibold sm:mt-7">
                   <span className="block text-platinum">Technology we build.</span>
-                  <span className="chrome-text mt-1 block">Operations we run.</span>
+                  <span className="chrome-text mt-1 block">Intelligence we engineer.</span>
                 </h1>
               </StaggerItem>
 
               <StaggerItem>
                 <p className="mt-6 max-w-[44ch] text-[16px] leading-[1.6] text-silver/60 sm:mt-7">
-                  GENBRIK is an AI-first technology company. We build AI systems, agents and
-                  software — then run the billing, claims and back-office operations around them.
+                  GENBRIK is an AI-first technology company. We build intelligent systems, AI
+                  software, automation, robotics, chips and AI surveillance — engineered for the
+                  real world.
                 </p>
               </StaggerItem>
 
               <StaggerItem>
                 <div className="mt-8 flex flex-col gap-3 sm:mt-9 sm:flex-row">
                   <ButtonLink href="/future-tech" size="lg" tone="dark">
-                    Explore AI &amp; Future Tech
+                    Explore AI &amp; Technology
                   </ButtonLink>
-                  <ButtonLink href="/bpo" size="lg" variant="secondary" tone="dark">
-                    Explore BPO &amp; Professional Services
+                  <ButtonLink
+                    href="/future-tech#chips-robotics-ai-surveillance"
+                    size="lg"
+                    variant="secondary"
+                    tone="dark"
+                  >
+                    Explore Robotics &amp; Chips
                   </ButtonLink>
                 </div>
               </StaggerItem>
@@ -127,7 +127,7 @@ export default function HomePage() {
       <Marquee items={marqueeItems} />
 
       {/* ---------------------------------------------------------------- */}
-      {/* Divisions — dark chrome vs platinum ledger.                       */}
+      {/* Technology fronts — intelligence first, applied systems around it. */}
       {/* ---------------------------------------------------------------- */}
       <Section tone="void">
         <Atmosphere grid={false} glow={false} />
@@ -135,21 +135,21 @@ export default function HomePage() {
           <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-7">
               <h2 className="font-display text-[clamp(2rem,3.6vw,3rem)] font-medium leading-[1.04] tracking-[-0.03em] text-platinum">
-                Two divisions.
+                AI is the core.
                 <br />
-                Different work, same company.
+                The rest extends it.
               </h2>
             </div>
             <div className="lg:col-span-5">
               <p className="max-w-[42ch] text-[14px] leading-relaxed text-silver/50">
-                Staffed, priced and run separately. Work with either one on its own, or start with
-                one and add the second when the work calls for it.
+                One engineering practice across intelligent systems, applied robotics, chips and
+                monitoring. Start with the intelligence, then build the physical system around it.
               </p>
             </div>
           </div>
 
           <div className="mt-10 grid gap-5 sm:mt-14 lg:grid-cols-12">
-            {/* AI & Future Tech — chrome and mesh */}
+            {/* AI & Technology — chrome and mesh */}
             <div className="lg:col-span-7">
               <Spotlight className="h-full">
                 <article className="fragment relative flex h-full min-h-0 flex-col overflow-hidden rounded-feature p-7 sm:min-h-[540px] md:p-9">
@@ -164,11 +164,11 @@ export default function HomePage() {
                         <span className="dot bg-platinum/70" />
                         AI-first
                       </span>
-                      <span className="text-[10.5px] text-silver/30">AI &amp; Future Tech</span>
+                      <span className="text-[10.5px] text-silver/30">AI &amp; Technology</span>
                     </div>
 
                     <h3 className="mt-8 max-w-[18ch] font-display text-[clamp(1.7rem,2.6vw,2.15rem)] font-medium leading-[1.06] tracking-[-0.025em] text-platinum sm:mt-10">
-                      AI systems, agents and automation, engineered to run.
+                      Intelligent systems, agents and software, engineered to run.
                     </h3>
                     <p className="mt-4 max-w-[44ch] text-[13.5px] leading-relaxed text-silver/50">
                       Generative AI, agents, automation and the software around them — scoped as
@@ -176,7 +176,7 @@ export default function HomePage() {
                     </p>
 
                     <ul className="mt-7 grid gap-x-8 border-t border-white/10 pt-2 sm:mt-8 sm:grid-cols-2">
-                      {divisionServices.futureTech.map((service) => (
+                      {technologyServices.intelligence.map((service) => (
                         <li
                           key={service}
                           className="flex items-center justify-between gap-3 border-b border-white/[0.06] py-3 text-[12.5px] text-silver/65"
@@ -190,14 +190,14 @@ export default function HomePage() {
                       href="/future-tech"
                       className="mt-auto inline-flex items-center gap-2 pt-7 text-[12.5px] font-medium text-platinum sm:pt-8"
                     >
-                      <span className="link-underline">Explore AI &amp; Future Tech</span>
+                      <span className="link-underline">Explore AI &amp; Technology</span>
                     </Link>
                   </div>
                 </article>
               </Spotlight>
             </div>
 
-            {/* BPO — platinum ledger */}
+            {/* Applied systems — platinum ledger */}
             <div className="lg:col-span-5 lg:mt-14">
               <Spotlight className="h-full" tone="light">
                 <article className="surface-paper relative flex h-full min-h-0 flex-col overflow-hidden rounded-feature border border-black/10 p-7 text-slate sm:min-h-[480px] md:p-9">
@@ -206,23 +206,21 @@ export default function HomePage() {
                     <div className="flex flex-wrap items-center justify-between gap-4 gap-y-1.5">
                       <span className="chip chip-light">
                         <span className="dot bg-slate/40" />
-                        Run
+                        Applied
                       </span>
-                      <span className="text-[10.5px] text-slate-muted/60">
-                        BPO &amp; Professional Services
-                      </span>
+                      <span className="text-[10.5px] text-slate-muted/60">Robotics &amp; Chips</span>
                     </div>
 
                     <h3 className="mt-8 max-w-[18ch] font-display text-[clamp(1.6rem,2.4vw,2rem)] font-medium leading-[1.08] tracking-[-0.02em] text-slate sm:mt-10">
-                      The back office, run to a documented process.
+                      Intelligence in the physical world.
                     </h3>
                     <p className="mt-4 max-w-[42ch] text-[13.5px] leading-relaxed text-slate-muted">
-                      Billing, claims, staffing and administrative operations — supervised at the
-                      start and reviewed monthly against agreed measures.
+                      Robots, robotic processors, chips and AI-assisted surveillance — the applied
+                      layer around the software.
                     </p>
 
                     <ul className="mt-7 border-t border-black/10 sm:mt-8">
-                      {divisionServices.bpo.map((service) => (
+                      {technologyServices.applied.map((service) => (
                         <li
                           key={service}
                           className="flex items-center justify-between gap-3 border-b border-black/10 py-3 text-[12.5px] text-slate"
@@ -233,10 +231,10 @@ export default function HomePage() {
                     </ul>
 
                     <Link
-                      href="/bpo"
+                      href="/future-tech#chips-robotics-ai-surveillance"
                       className="mt-auto inline-flex items-center gap-2 pt-7 text-[12.5px] font-medium text-slate sm:pt-8"
                     >
-                      <span className="link-underline">Explore BPO &amp; Professional Services</span>
+                      <span className="link-underline">Explore robotics &amp; chips</span>
                     </Link>
                   </div>
                 </article>
@@ -258,9 +256,9 @@ export default function HomePage() {
                 AI first. Everything else built around it.
               </h2>
               <p className="mt-4 text-[14.5px] leading-relaxed text-slate-muted">
-                Generative AI, agents and automation lead the practice. Software and operations
-                follow the same standard: a defined deliverable, a written scope and a price agreed
-                before work starts.
+                Generative AI, agents and automation lead the practice. Software, robotics and
+                chips follow the same standard: a defined deliverable, a written scope and a price
+                agreed before work starts.
               </p>
             </div>
             <Link
@@ -290,8 +288,8 @@ export default function HomePage() {
                   Why teams choose GENBRIK
                 </h2>
                 <p className="mt-5 max-w-[38ch] text-[14px] leading-relaxed text-silver/50">
-                  Four things that hold across both divisions, whether the work is a build or a
-                  managed process.
+                  Four principles that hold across every AI, robotics and applied systems
+                  engagement.
                 </p>
 
                 <div className="relative mt-10 hidden h-[220px] overflow-hidden rounded-panel border border-white/10 lg:block">
@@ -301,9 +299,9 @@ export default function HomePage() {
                   <div className="relative flex h-full flex-col justify-between p-5">
                     <span className="text-[10.5px] text-silver/35">One partner</span>
                     <div className="space-y-2">
-                      <p className="font-display text-[15px] text-platinum">Technology + operations</p>
+                      <p className="font-display text-[15px] text-platinum">AI + applied systems</p>
                       <p className="max-w-[30ch] text-[11.5px] leading-relaxed text-silver/40">
-                        The handoff between the system and the team running it stays internal.
+                        The handoff between the model and the system around it stays internal.
                       </p>
                     </div>
                   </div>
@@ -339,7 +337,7 @@ export default function HomePage() {
             <div>
               <h2 className="font-display text-h2 font-medium text-slate">Industries we work in</h2>
               <p className="mt-4 max-w-[52ch] text-[14.5px] leading-relaxed text-slate-muted">
-                Where the two divisions are usually used together, and where one is enough.
+                Where AI, robotics and intelligent systems are applied.
               </p>
             </div>
             <Link
@@ -363,7 +361,7 @@ export default function HomePage() {
             <div className="max-w-[52ch]">
               <h2 className="font-display text-h2 font-medium text-slate">How we work</h2>
               <p className="mt-4 text-[14.5px] leading-relaxed text-slate-muted">
-                The same four steps whether we are building software or taking over a process.
+                The same four steps whether we are building a model, a robot or a platform.
               </p>
             </div>
           </div>
@@ -394,7 +392,7 @@ export default function HomePage() {
           <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
               <h2 className="max-w-[22ch] font-display text-[clamp(2rem,3.6vw,3rem)] font-medium leading-[1.04] tracking-[-0.03em] text-platinum">
-                Tell us what you need to build, or run.
+                Tell us what you want to build.
               </h2>
               <p className="mt-4 max-w-[48ch] text-[14px] leading-relaxed text-silver/50">
                 A short call is usually enough to know whether we are the right partner. If we are

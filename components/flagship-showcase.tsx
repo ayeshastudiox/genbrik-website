@@ -1,16 +1,15 @@
 import Link from 'next/link'
 import { Icon } from '@/components/icon'
 import { NodeField } from '@/components/node-field'
-import { chipsRoboticsServices } from '@/lib/content'
 import type { IconName } from '@/lib/content'
 
 /**
  * Flagship services showcase (home).
  *
  * Deliberately not a uniform card grid: one large AI feature on graphite, a
- * glass AI-agents panel, a paper software panel, three borderless operations
- * columns, and a compact index of the newer chip, robotics and surveillance
- * service lines. AI gets the largest surface and the strongest contrast.
+ * glass AI-agents panel, a paper software panel, and three borderless applied
+ * technology columns for robotics, chips and AI surveillance. AI gets the
+ * largest surface and the strongest contrast.
  */
 
 const aiServices = [
@@ -26,7 +25,7 @@ const agentServices = ['Custom AI agents', 'Multi-agent architectures', 'AI rese
 
 const softwareServices = ['Website & e-commerce builds', 'Custom web applications', 'Business dashboards', 'Internal tools']
 
-const operations: Array<{
+const appliedServices: Array<{
   icon: IconName
   title: string
   line: string
@@ -34,25 +33,25 @@ const operations: Array<{
   label: string
 }> = [
   {
-    icon: 'receipt',
-    title: 'Medical billing & RCM',
-    line: 'Coding, claims, denials and posting run as one cycle.',
-    href: '/bpo/healthcare',
-    label: 'Healthcare',
+    icon: 'bot',
+    title: 'Robotics',
+    line: 'Robots, robot chips and control layers for physical systems.',
+    href: '/future-tech#robots',
+    label: 'Applied',
   },
   {
-    icon: 'shield-check',
-    title: 'DME, insurance & staffing',
-    line: 'Intake, eligibility, authorisations and clinical recruitment.',
-    href: '/bpo/healthcare',
-    label: 'Healthcare',
+    icon: 'cpu',
+    title: 'Chips & computing',
+    line: 'Chips, AI chips and robotic processors for intelligent hardware.',
+    href: '/future-tech#chips',
+    label: 'Hardware',
   },
   {
-    icon: 'headphones',
-    title: 'Back office & finance',
-    line: 'Support, data, AP/AR, real estate and e-commerce operations.',
-    href: '/bpo',
-    label: 'Operations',
+    icon: 'cctv',
+    title: 'AI Surveillance',
+    line: 'Intelligent monitoring, computer vision and human review.',
+    href: '/future-tech#ai-surveillance',
+    label: 'Security',
   },
 ]
 
@@ -171,8 +170,8 @@ export function FlagshipShowcase() {
         </div>
       </article>
 
-      {/* Operations columns — borderless, to break the card rhythm */}
-      {operations.map((item) => (
+      {/* Applied technology columns — borderless, to break the card rhythm */}
+      {appliedServices.map((item) => (
         <Link
           key={item.title}
           href={item.href}
@@ -196,48 +195,6 @@ export function FlagshipShowcase() {
         </Link>
       ))}
 
-      {/* New service lines — chips, robotics and AI surveillance. */}
-      <div className="mt-2 border-t border-hairline-light pt-6 lg:col-span-12">
-        <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
-          <div>
-            <p className="text-[9.5px] uppercase tracking-[0.18em] text-slate-muted/60">
-              New service lines
-            </p>
-            <p className="mt-1.5 font-display text-[16px] font-medium text-slate">
-              Chips, robotics &amp; AI surveillance
-            </p>
-          </div>
-          <Link
-            href="/future-tech#chips-robotics-ai-surveillance"
-            className="shrink-0 text-[11.5px] text-slate underline decoration-slate/25 underline-offset-4 transition-colors hover:decoration-slate/70"
-          >
-            Explore the practice
-          </Link>
-        </div>
-
-        <div className="mt-5 grid gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-4">
-          {chipsRoboticsServices.map((service) => (
-            <Link
-              key={service.id}
-              href={`/future-tech#${service.id}`}
-              className="group flex items-start justify-between gap-3 border-t border-hairline-light pt-3.5 sm:border-t-0 sm:pt-0"
-            >
-              <span>
-                <span className="block font-display text-[14px] font-medium text-slate transition-colors group-hover:text-ink">
-                  {service.name}
-                </span>
-                <span className="mt-1 block text-[11.5px] leading-relaxed text-slate-muted">
-                  {service.line}
-                </span>
-              </span>
-              <Icon
-                name={service.icon}
-                className="mt-0.5 h-4 w-4 shrink-0 text-slate-muted/60"
-              />
-            </Link>
-          ))}
-        </div>
-      </div>
     </div>
   )
 }

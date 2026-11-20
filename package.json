@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Official GENBRIK website — Future Tech and BPO & Professional Services.",
+  "description": "Official GENBRIK website — AI, technology, robotics and chips.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

@@ -86,7 +86,7 @@ export default function WebSoftwarePage() {
       <PageHero
         tone="light"
         title={<>Websites, stores and internal tools your team can actually run.</>}
-        intro="Web development from GENBRIK AI & Future Tech: WordPress and WooCommerce builds, custom web applications, dashboards and internal systems — with the handover that makes them maintainable."
+        intro="Web development from GENBRIK AI & Technology: WordPress and WooCommerce builds, custom web applications, dashboards and internal systems — with the handover that makes them maintainable."
         actions={
           <>
             <ButtonLink href="/contact" size="lg" tone="light">

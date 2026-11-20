@@ -1,25 +1,18 @@
 import {
   Bot,
   Building2,
-  Car,
   Cctv,
   CircuitBoard,
   Cpu,
+  Factory,
   FileSearch,
-  Headphones,
   HeartPulse,
-  Home,
-  Landmark,
   LayoutDashboard,
+  Microscope,
   Monitor,
-  Package,
-  Receipt,
   Rocket,
-  ShieldCheck,
-  ShoppingBag,
   Store,
-  Users,
-  Wallet,
+  Truck,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import type { IconName } from '@/lib/content'
@@ -31,26 +24,19 @@ const iconMap: Record<IconName, LucideIcon> = {
   'file-search': FileSearch,
   monitor: Monitor,
   'layout-dashboard': LayoutDashboard,
-  receipt: Receipt,
-  users: Users,
-  'shield-check': ShieldCheck,
-  headphones: Headphones,
   'heart-pulse': HeartPulse,
-  package: Package,
-  landmark: Landmark,
-  car: Car,
-  home: Home,
-  wallet: Wallet,
-  'shopping-bag': ShoppingBag,
   cpu: Cpu,
   'circuit-board': CircuitBoard,
   cctv: Cctv,
+  factory: Factory,
+  truck: Truck,
+  microscope: Microscope,
   rocket: Rocket,
   store: Store,
   building: Building2,
 }
 
 export function Icon({ name, className }: { name: IconName; className?: string }) {
-  const Component = iconMap[name] ?? Package
+  const Component = iconMap[name] ?? Bot
   return <Component aria-hidden className={cn('h-5 w-5', className)} strokeWidth={1.5} />
 }

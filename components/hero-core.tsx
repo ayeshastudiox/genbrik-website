@@ -3,9 +3,9 @@
 import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from 'framer-motion'
 import { useEffect, useRef } from 'react'
 import {
-  DivisionFragment,
   NodeFragment,
   StatusFragment,
+  TechnologyFragment,
 } from '@/components/interface-fragments'
 import { cn } from '@/lib/utils'
 
@@ -182,7 +182,7 @@ export function HeroCore({ className }: { className?: string }) {
         style={{ x: chipsX, y: chipsY }}
         className="absolute -right-2 bottom-[2%] hidden lg:block"
       >
-        <DivisionFragment className="animate-float" />
+        <TechnologyFragment className="animate-float" />
       </motion.div>
     </div>
   )

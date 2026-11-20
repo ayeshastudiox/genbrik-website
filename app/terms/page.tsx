@@ -25,9 +25,9 @@ const sections = [
     title: 'No professional advice',
     body: (
       <>
-        Content on this site is general information, not legal, medical, insurance, financial or
-        professional advice. Nothing here creates a client relationship, and nothing on this site is
-        an offer to sell insurance or a solicitation to buy it.
+        Content on this site is general information, not legal, financial or professional advice.
+        Nothing here creates a client relationship, and nothing on this site is an offer to sell a
+        product or service.
       </>
     ),
   },

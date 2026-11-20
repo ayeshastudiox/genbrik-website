@@ -15,9 +15,9 @@ import type { IconName } from '@/lib/content'
 import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = buildMetadata({
-  title: 'AI & Future Tech',
+  title: 'AI & Technology',
   description:
-    'GENBRIK AI & Future Tech builds AI systems, AI agents, intelligent automation, web applications, custom software, chips, robotics and AI surveillance — alongside AGI and emerging technology work.',
+    'GENBRIK AI & Technology builds AI systems, agents, intelligent automation, software, chips, robotics and AI surveillance — alongside AGI and emerging technology work.',
   path: '/future-tech',
 })
 
@@ -41,7 +41,7 @@ const aiPillars = [
   },
   {
     title: 'Intelligent automation',
-    body: 'The connective layer: workflows, integrations and business process automation across the tools you already run.',
+    body: 'The connective layer: workflows, integrations and automation across the tools you already run.',
     services: ['Workflow automation', 'Process automation', 'Integrations', 'Voice & chat'],
   },
 ]
@@ -90,6 +90,7 @@ const capabilityChips = [
   'Software',
   'Robotics',
   'Chips',
+  'Semiconductor',
   'AI Surveillance',
 ]
 
@@ -99,8 +100,8 @@ export default function FutureTechPage() {
       <PageHero
         sweep
         badge={<Badge>AI &amp; intelligent systems</Badge>}
-        title={<>AI systems, agents and software built to run in production.</>}
-        intro="AI is the core of this division. We build generative AI, agents and intelligent automation into real workflows — then the software, web platforms and infrastructure around them. Chips, robotics and AI surveillance extend that engineering into physical systems."
+        title={<>AI systems, agents, robotics and chips built to run in production.</>}
+        intro="AI is the core of this practice. We build generative AI, agents and intelligent automation into real systems — then the software, robotics, chips and monitoring around them."
         actions={
           <>
             <ButtonLink href="/contact" size="lg" tone="dark">
@@ -123,7 +124,7 @@ export default function FutureTechPage() {
         visual={<CapabilityStack />}
       />
 
-      {/* AI spotlight — the division's centre of gravity */}
+      {/* AI spotlight — the practice's centre of gravity */}
       <Section tone="ink" border>
         <Atmosphere grid={false} />
         <Container className="relative">
@@ -242,6 +243,16 @@ export default function FutureTechPage() {
                               <p className="mt-2 text-[12px] leading-relaxed text-silver/45">
                                 {service.description}
                               </p>
+                              <ul className="mt-3 flex flex-wrap gap-1.5">
+                                {service.capabilities.map((capability) => (
+                                  <li
+                                    key={capability}
+                                    className="rounded-full border border-white/10 px-2 py-0.5 text-[9.5px] leading-relaxed text-silver/40"
+                                  >
+                                    {capability}
+                                  </li>
+                                ))}
+                              </ul>
                               <Link
                                 href="/contact"
                                 className="mt-4 inline-flex min-h-9 items-center text-[11.5px] font-medium text-silver/70 transition-colors hover:text-platinum sm:min-h-0"
@@ -282,10 +293,10 @@ export default function FutureTechPage() {
           <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
             <div>
               <h2 className="max-w-[24ch] font-display text-[clamp(1.7rem,2.8vw,2.3rem)] font-medium leading-[1.06] tracking-[-0.03em] text-platinum">
-                Bring us the process that keeps breaking.
+                Bring us the system that needs to think.
               </h2>
               <p className="mt-3 max-w-[48ch] text-[13.5px] leading-relaxed text-silver/50">
-                We will tell you whether it needs AI, software, a person, or all three.
+                We will tell you whether it needs AI, robotics, software or a combination.
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">

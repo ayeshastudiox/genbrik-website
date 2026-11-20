@@ -76,7 +76,7 @@ export default function AiAutomationPage() {
       <PageHero
         badge={<Badge>Deliverable service</Badge>}
         title={<>AI that does a job, not a demo.</>}
-        intro="Generative AI, agents and document systems scoped around one workflow at a time — with the evaluation, review points and logging that make them usable in operations."
+        intro="Generative AI, agents and document systems scoped around one workflow at a time — with the evaluation, review points and logging that make them usable in production."
         actions={
           <>
             <ButtonLink href="/contact" size="lg" tone="dark">

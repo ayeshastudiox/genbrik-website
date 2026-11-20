@@ -31,7 +31,7 @@ const sections = [
     body: (
       <>
         When you submit the consultation form we collect the name, company, email address, phone
-        number, division selection and message you provide. The server that delivers this site may
+        number, area selection and message you provide. The server that delivers this site may
         also record standard request information — such as IP address, browser type and the pages
         requested — for security and reliability. This site does not set analytics or advertising
         cookies.

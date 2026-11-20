@@ -13,8 +13,10 @@ import { cn } from '@/lib/utils'
  * the other at larger widths, collapsing to a single stacked column on phones.
  *
  * The Chairman has no supplied photograph, so his media panel is a designed
- * monogram plate rather than an empty image frame. No biography, qualification,
- * achievement or other personal detail is invented here.
+ * monogram plate rather than an empty image frame. The AI & Technology profile
+ * uses a purpose-built metallic monogram plate in place of a portrait. No
+ * biography, qualification, achievement or other personal detail is invented
+ * here.
  */
 
 function PortraitFrame({
@@ -85,6 +87,45 @@ function PortraitFrame({
   )
 }
 
+function AiMonogramFrame({ className }: { className?: string }) {
+  return (
+    <div
+      role="img"
+      aria-label="Metallic AI and technology monogram for Ayesha Adnan"
+      className={cn('relative h-full w-full overflow-hidden bg-[#0B0B0E]', className)}
+    >
+      <div aria-hidden className="surface-void absolute inset-0" />
+      <div aria-hidden className="grid-field absolute inset-0 opacity-60" />
+      <div aria-hidden className="chrome-arc absolute -right-20 -top-20 h-64 w-64 opacity-35" />
+      <div aria-hidden className="glow-orb absolute inset-8 opacity-40" />
+
+      <div className="relative flex h-full flex-col items-center justify-center px-5 py-8">
+        <div className="relative flex h-28 w-28 items-center justify-center rounded-full border border-white/10 bg-[rgba(11,11,14,0.55)] shadow-[inset_0_1px_0_rgba(255,255,255,0.14)] sm:h-32 sm:w-32">
+          <span className="absolute inset-2 rounded-full border border-white/[0.06]" />
+          <span aria-hidden className="absolute -inset-4 rounded-full border border-white/[0.04]" />
+          <span className="chrome-text font-display text-[40px] font-semibold tracking-[-0.07em] sm:text-[46px]">
+            AD
+          </span>
+        </div>
+
+        <div className="mt-5 flex items-center gap-2 text-[9px] uppercase tracking-[0.26em] text-silver/35">
+          <span aria-hidden className="h-px w-6 bg-silver/25" />
+          AI &amp; Technology
+          <span aria-hidden className="h-px w-6 bg-silver/25" />
+        </div>
+        <p className="mt-2 font-display text-[10.5px] tracking-[0.18em] text-silver/25">
+          INTELLIGENCE · SYSTEMS
+        </p>
+      </div>
+
+      <span className="chip absolute left-4 top-4 sm:left-5 sm:top-5">AI &amp; Technology</span>
+      <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
+        <p className="text-[9px] uppercase tracking-[0.18em] text-silver/30">GENBRIK leadership</p>
+      </div>
+    </div>
+  )
+}
+
 export function Leadership() {
   return (
     <section className="relative overflow-hidden bg-ink py-20 text-silver md:py-28">
@@ -120,8 +161,8 @@ export function Leadership() {
             <div className="mt-8 h-px w-28 bg-[linear-gradient(90deg,rgba(232,233,237,0.5),transparent)]" />
 
             <p className="mt-8 max-w-[46ch] text-[13px] leading-relaxed text-silver/40">
-              GENBRIK is led across both divisions — AI &amp; Future Tech and BPO &amp; Professional
-              Services — under one standard for how work is scoped, delivered and supported.
+              GENBRIK is led across AI, software, robotics and applied systems — under one
+              standard for how work is scoped, delivered and supported.
             </p>
           </div>
         </div>
@@ -140,14 +181,7 @@ export function Leadership() {
               {/* Ayesha Adnan */}
               <article className="relative h-full overflow-hidden rounded-feature border border-white/10 bg-[#0B0B0E] md:min-h-[320px] lg:min-h-[380px] xl:min-h-[360px]">
                 <div className="grid h-full md:grid-cols-[minmax(0,0.86fr)_1.14fr]">
-                  <PortraitFrame
-                    src="/images/ayesha-adnan.png?v=1"
-                    alt="Ayesha Adnan, Head of AI & Technology at GENBRIK"
-                    initials="AD"
-                    label="AI & Technology"
-                    objectPosition="top"
-                    className="aspect-[4/5] border-b border-white/10 sm:aspect-[16/9] md:aspect-auto md:border-b-0 md:border-r"
-                  />
+                  <AiMonogramFrame className="aspect-[4/5] border-b border-white/10 sm:aspect-[16/9] md:aspect-auto md:border-b-0 md:border-r" />
 
                   <div className="flex min-w-0 flex-col justify-center p-5 sm:p-6 lg:p-7">
                     <p className="text-[10.5px] uppercase tracking-[0.2em] text-silver/30">

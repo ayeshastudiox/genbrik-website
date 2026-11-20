@@ -4,7 +4,7 @@
  * Every service name below comes from spec §1.2 / §1.3 or the approved service
  * update. Descriptions are
  * service descriptions only — no clients, statistics, certifications,
- * locations or licensing claims are invented anywhere in this file.
+ * locations or licensing statements are invented anywhere in this file.
  *
  * Facts that are not established in the spec are marked with the
  * [CONFIRM: ...] placeholder from spec §6 so they stay trivially searchable.
@@ -15,20 +15,13 @@ export type IconName =
   | 'file-search'
   | 'monitor'
   | 'layout-dashboard'
-  | 'receipt'
-  | 'users'
-  | 'shield-check'
-  | 'headphones'
   | 'heart-pulse'
-  | 'package'
-  | 'landmark'
-  | 'car'
-  | 'home'
-  | 'wallet'
-  | 'shopping-bag'
   | 'cpu'
   | 'circuit-board'
   | 'cctv'
+  | 'factory'
+  | 'truck'
+  | 'microscope'
   | 'rocket'
   | 'store'
   | 'building'
@@ -44,11 +37,13 @@ export type ServiceCategory = {
   hrefLabel?: string
 }
 
+export type IndustryTechnology = 'AI' | 'Robotics' | 'Chips' | 'Surveillance'
+
 export type Industry = {
   id: string
   name: string
   note: string
-  divisions: Array<'AI & Future Tech' | 'BPO'>
+  technologies: IndustryTechnology[]
   icon: IconName
 }
 
@@ -67,6 +62,8 @@ export type NavMenu = {
   href: string
   columns: Array<{ title: string; items: NavItem[] }>
   footer: { label: string; href: string }
+  railLabel: string
+  summary: string
 }
 
 export type ServicePresentation = {
@@ -74,6 +71,7 @@ export type ServicePresentation = {
   name: string
   line: string
   description: string
+  capabilities: string[]
   icon: IconName
 }
 
@@ -81,7 +79,7 @@ export type ServicePresentation = {
  * The four chip, robotics and surveillance service lines.
  *
  * Descriptions stay at the level of the service: no hardware specifications,
- * manufacturing claims, certifications or performance figures are implied.
+ * manufacturing statements, certifications or performance figures are implied.
  */
 export const chipsRoboticsServices: ServicePresentation[] = [
   {
@@ -90,6 +88,7 @@ export const chipsRoboticsServices: ServicePresentation[] = [
     line: 'Chip-focused systems for AI and intelligent applications.',
     description:
       'Chip-related technology services for AI and intelligent systems, scoped around the application and the software it connects to.',
+    capabilities: ['Chips', 'AI Chips', 'Semiconductor Technology'],
     icon: 'cpu',
   },
   {
@@ -98,6 +97,7 @@ export const chipsRoboticsServices: ServicePresentation[] = [
     line: 'Control and compute layers for robotic systems.',
     description:
       "Chip and control-layer services for robotic systems, connecting hardware behaviour with GENBRIK's software and AI engineering.",
+    capabilities: ['Robot Chips', 'Robotic Processors and Controllers'],
     icon: 'circuit-board',
   },
   {
@@ -106,6 +106,13 @@ export const chipsRoboticsServices: ServicePresentation[] = [
     line: 'Robotic systems built into operational workflows.',
     description:
       'Robotic systems integrated into operational workflows, with the software, controls and review points that surround them.',
+    capabilities: [
+      'Robots',
+      'Robotics Technology',
+      'Intelligent Robotics',
+      'Autonomous Robotic Systems',
+      'Humanoid and Industrial Robotics',
+    ],
     icon: 'bot',
   },
   {
@@ -114,12 +121,18 @@ export const chipsRoboticsServices: ServicePresentation[] = [
     line: 'AI-assisted monitoring with human review.',
     description:
       'AI-assisted surveillance systems for monitoring environments, designed with defined review points and clear data-handling boundaries.',
+    capabilities: [
+      'AI Surveillance',
+      'Intelligent Monitoring',
+      'AI-powered Security Systems',
+      'Computer Vision and Object Detection',
+    ],
     icon: 'cctv',
   },
 ]
 
 /* -------------------------------------------------------------------------- */
-/* Division one — AI & Future Tech (spec §1.2)                                */
+/* AI & Technology (spec §1.2)                                                 */
 /* -------------------------------------------------------------------------- */
 
 export const futureTechCategories: ServiceCategory[] = [
@@ -154,7 +167,7 @@ export const futureTechCategories: ServiceCategory[] = [
       'Multi-agent architectures',
       'Autonomous workflow systems',
       'AI research assistants',
-      'Business process automation',
+      'Workflow automation',
       'Intelligent task execution systems',
     ],
     href: '/future-tech/ai-automation',
@@ -251,236 +264,85 @@ export const futureTechCategories: ServiceCategory[] = [
 ]
 
 /* -------------------------------------------------------------------------- */
-/* Division two — BPO & Professional Services (spec §1.3)                      */
-/* -------------------------------------------------------------------------- */
-
-export const bpoCategories: ServiceCategory[] = [
-  {
-    id: 'medical-billing',
-    name: 'Medical Billing & Revenue Cycle Management',
-    description:
-      'Coding, claims and follow-up handled by a team that works inside your practice management system and reports against your revenue cycle, not against a ticket count.',
-    services: [
-      'Medical coding & billing',
-      'Claims submission',
-      'Insurance follow-ups',
-      'Denial management',
-      'Payment posting',
-      'RCM support',
-    ],
-    href: '/bpo/healthcare',
-    hrefLabel: 'See full details',
-  },
-  {
-    id: 'dme',
-    name: 'Durable Medical Equipment (DME) Services',
-    description:
-      'Order intake through resupply for DME suppliers, with documentation chased and verified before it turns into a claim problem.',
-    services: [
-      'DME billing',
-      'Order intake',
-      'Documentation management',
-      'Eligibility verification',
-      'Resupply coordination',
-      'Customer support',
-    ],
-    href: '/bpo/healthcare',
-    hrefLabel: 'See full details',
-  },
-  {
-    id: 'medicare-insurance',
-    name: 'Medicare & Health Insurance Support',
-    description:
-      'Administrative support for Medicare and commercial insurance workflows — prior authorisations, benefits checks and member-facing support, run to your scripts and escalation rules.',
-    services: [
-      'Medicare administrative support',
-      'Prior authorization coordination',
-      'Insurance & benefits verification',
-      'Healthcare customer support',
-    ],
-    href: '/bpo/healthcare',
-    hrefLabel: 'See full details',
-  },
-  {
-    id: 'healthcare-staffing',
-    name: 'Healthcare Staffing & Physician Recruitment',
-    description:
-      'Clinical and non-clinical hiring support for providers and telehealth organisations, from sourcing through the credentialing paperwork.',
-    services: [
-      'Physician & specialist recruitment',
-      'Telehealth staffing',
-      'Locum tenens recruitment',
-      'Nurse recruitment',
-      'Medical virtual assistants',
-    ],
-    href: '/bpo/healthcare',
-    hrefLabel: 'See full details',
-  },
-  {
-    id: 'auto-insurance',
-    name: 'Auto Insurance BPO',
-    description:
-      'Policy administration and claims support for auto insurers, agencies and managing general agents, run as a documented back-office function.',
-    services: [
-      'Policy administration',
-      'Claims processing support',
-      'Insurance verification',
-      'Lead management',
-      'Customer support',
-    ],
-  },
-  {
-    id: 'real-estate',
-    name: 'Real Estate BPO',
-    description:
-      'Virtual assistants and coordinators for brokerages and agencies — listings, transactions and leads kept moving without adding headcount.',
-    services: [
-      'Real estate virtual assistants',
-      'CRM management',
-      'Property listing management',
-      'Transaction coordination',
-      'Appointment setting',
-      'Lead management',
-    ],
-  },
-  {
-    id: 'general-outsourcing',
-    name: 'General Business Outsourcing',
-    description:
-      'Customer support, back office and data work for teams that need capacity without a long hiring cycle.',
-    services: [
-      'Customer support',
-      'Technical support',
-      'Inbound & outbound calling',
-      'Data entry',
-      'Back-office management',
-      'Administrative support',
-    ],
-  },
-  {
-    id: 'finance-accounting',
-    name: 'Financial & Accounting Support',
-    description:
-      'Bookkeeping and reconciliation support for finance teams that need the routine work closed on time, every month.',
-    services: [
-      'Bookkeeping',
-      'Accounts payable',
-      'Accounts receivable',
-      'Payroll processing support',
-      'Financial record management',
-      'Reconciliation support',
-    ],
-  },
-  {
-    id: 'ecommerce-support',
-    name: 'E-commerce Support',
-    description:
-      'Order, catalogue and marketplace operations for stores that have outgrown a one-person back office.',
-    services: [
-      'Order processing',
-      'Product listing management',
-      'Marketplace support',
-      'Inventory administration',
-      'E-commerce customer support',
-    ],
-  },
-  {
-    id: 'final-expense',
-    name: 'Final Expense Services',
-    description:
-      'Administrative and customer-service support for final expense insurance teams. GENBRIK is not an insurance provider, underwriter or licensed agency, and does not sell insurance.',
-    services: [
-      'Administrative support',
-      'Customer service',
-      'Lead management',
-      'Policy administration',
-      'Application processing support',
-      'Claims-related administrative assistance',
-      'Appointment setting',
-    ],
-  },
-]
-
-/* -------------------------------------------------------------------------- */
-/* Industries (spec §1.4)                                                      */
+/* Industries                                                                  */
 /* -------------------------------------------------------------------------- */
 
 export const industries: Industry[] = [
   {
-    id: 'healthcare',
-    name: 'Healthcare & medical practices',
-    note: 'Medical billing and RCM, DME and staffing from the BPO side; document processing and internal tools from AI & Future Tech.',
-    divisions: ['BPO', 'AI & Future Tech'],
+    id: 'manufacturing',
+    name: 'Manufacturing & industrial automation',
+    note: 'AI, robotics and machine vision for production, inspection and material flow.',
+    technologies: ['AI', 'Robotics', 'Chips'],
+    icon: 'factory',
+  },
+  {
+    id: 'security',
+    name: 'Security & surveillance',
+    note: 'AI-assisted monitoring, computer vision and object detection for controlled environments.',
+    technologies: ['AI', 'Surveillance'],
+    icon: 'cctv',
+  },
+  {
+    id: 'logistics',
+    name: 'Logistics & warehousing',
+    note: 'Autonomous robotic systems, workflow automation and operational intelligence.',
+    technologies: ['AI', 'Robotics'],
+    icon: 'truck',
+  },
+  {
+    id: 'infrastructure',
+    name: 'Smart infrastructure',
+    note: 'Connected systems, intelligent monitoring and automation across physical environments.',
+    technologies: ['AI', 'Robotics', 'Surveillance'],
+    icon: 'building',
+  },
+  {
+    id: 'healthcare-technology',
+    name: 'Healthcare technology',
+    note: 'AI, robotics and software products for health technology and care environments.',
+    technologies: ['AI', 'Robotics'],
     icon: 'heart-pulse',
   },
   {
-    id: 'dme',
-    name: 'DME providers',
-    note: 'DME billing, order intake, documentation and resupply coordination.',
-    divisions: ['BPO'],
-    icon: 'package',
+    id: 'semiconductor',
+    name: 'Semiconductor & electronics',
+    note: 'Chips, AI chips and robotic processors for intelligent hardware systems.',
+    technologies: ['AI', 'Chips'],
+    icon: 'circuit-board',
   },
   {
-    id: 'insurance',
-    name: 'Medicare & insurance organizations',
-    note: 'Prior authorisation, benefits verification and member support.',
-    divisions: ['BPO'],
-    icon: 'landmark',
-  },
-  {
-    id: 'auto-insurance',
-    name: 'Auto insurance companies',
-    note: 'Policy administration, claims processing support and verification.',
-    divisions: ['BPO'],
-    icon: 'car',
-  },
-  {
-    id: 'real-estate',
-    name: 'Real estate agencies',
-    note: 'Virtual assistants, transaction coordination, CRM and listing management.',
-    divisions: ['BPO'],
-    icon: 'home',
-  },
-  {
-    id: 'financial-services',
-    name: 'Financial services',
-    note: 'Bookkeeping, AP/AR and reconciliation support, plus reporting and internal systems.',
-    divisions: ['BPO', 'AI & Future Tech'],
-    icon: 'wallet',
-  },
-  {
-    id: 'ecommerce',
-    name: 'E-commerce businesses',
-    note: 'Storefront and marketplace builds, order operations and customer support.',
-    divisions: ['AI & Future Tech', 'BPO'],
-    icon: 'shopping-bag',
+    id: 'research',
+    name: 'Research & technology',
+    note: 'Applied AI, robotics and emerging technology for research and engineering teams.',
+    technologies: ['AI', 'Robotics', 'Chips'],
+    icon: 'microscope',
   },
   {
     id: 'technology',
     name: 'Technology companies',
-    note: 'Custom software, AI integration and additional engineering capacity.',
-    divisions: ['AI & Future Tech'],
+    note: 'AI integration, custom software and additional engineering capacity.',
+    technologies: ['AI', 'Chips'],
     icon: 'cpu',
   },
   {
     id: 'startups',
     name: 'Startups',
-    note: 'Focused first builds — web apps, AI features and the back office behind them.',
-    divisions: ['AI & Future Tech', 'BPO'],
+    note: 'Focused first builds — AI features, web apps and intelligent products.',
+    technologies: ['AI'],
     icon: 'rocket',
   },
   {
     id: 'small-business',
     name: 'Small and medium businesses',
-    note: 'Websites, internal tools and outsourced operations that scale with headcount.',
-    divisions: ['AI & Future Tech', 'BPO'],
+    note: 'Practical AI, automation and web systems that scale with the business.',
+    technologies: ['AI'],
     icon: 'store',
   },
   {
     id: 'enterprise',
     name: 'Large enterprises',
-    note: 'Enterprise AI integration, internal systems and managed back-office functions.',
-    divisions: ['AI & Future Tech', 'BPO'],
+    note: 'Enterprise AI integration, robotics and internal systems at scale.',
+    technologies: ['AI', 'Robotics', 'Surveillance'],
     icon: 'building',
   },
 ]
@@ -519,47 +381,47 @@ export const flagshipServices: FlagshipService[] = [
     icon: 'layout-dashboard',
   },
   {
-    id: 'medical-billing',
-    name: 'Medical billing & RCM',
-    line: 'Coding, claims, denials and posting run as one cycle.',
-    href: '/bpo/healthcare',
-    icon: 'receipt',
+    id: 'robots',
+    name: 'Robots',
+    line: 'Robotic systems built into operational workflows.',
+    href: '/future-tech#robots',
+    icon: 'bot',
   },
   {
-    id: 'healthcare-staffing',
-    name: 'Healthcare staffing',
-    line: 'Physician, nurse and telehealth recruitment support.',
-    href: '/bpo/healthcare',
-    icon: 'users',
+    id: 'robot-chips',
+    name: 'Robot Chips',
+    line: 'Control and compute layers for robotic systems.',
+    href: '/future-tech#robot-chips',
+    icon: 'circuit-board',
   },
   {
-    id: 'dme',
-    name: 'DME & insurance support',
-    line: 'Intake, eligibility, authorisation and resupply.',
-    href: '/bpo/healthcare',
-    icon: 'shield-check',
+    id: 'chips',
+    name: 'Chips & semiconductor technology',
+    line: 'AI chips and semiconductor technology for intelligent systems.',
+    href: '/future-tech#chips',
+    icon: 'cpu',
   },
   {
-    id: 'back-office',
-    name: 'Back-office operations',
-    line: 'Support, data and admin work run to a written process.',
-    href: '/bpo',
-    icon: 'headphones',
+    id: 'ai-surveillance',
+    name: 'AI Surveillance',
+    line: 'AI-assisted monitoring with human review.',
+    href: '/future-tech#ai-surveillance',
+    icon: 'cctv',
   },
 ]
 
 export const valueProps: ValueProp[] = [
   {
-    title: 'Technology and operations in one company',
-    body: 'Most partners do one or the other. GENBRIK builds the system and can run the process around it, so the handoff between them is internal rather than another contract to manage.',
+    title: 'AI at the core, systems around it',
+    body: 'Most partners stop at a model or a prototype. GENBRIK builds the intelligent system, the software around it and the robotics or monitoring layer it connects to — one engineering practice from idea to deployment.',
   },
   {
     title: 'Direct communication',
-    body: 'You work with the people doing the work. Requirements are not filtered through an account layer in either direction, and questions get answered by whoever is closest to them.',
+    body: 'You work with the engineers doing the work. Requirements are not filtered through an account layer in either direction, and questions get answered by whoever is closest to them.',
   },
   {
-    title: 'Built for detail-heavy operations',
-    body: 'Billing, claims, eligibility, payroll and records work rewards precision over speed. That is the standard the BPO division is organised around, and the standard our software is tested against.',
+    title: 'Built for intelligent systems',
+    body: 'AI, robotics and real-time monitoring reward precision over speed. Evaluation, review points and operational constraints are designed in from the start, not added after launch.',
   },
   {
     title: 'Scope you can hold us to',
@@ -577,12 +439,12 @@ export const processSteps: ProcessStep[] = [
     body: 'Scope, timeline, team and price in one document. You see what is included, what is not, and what we need from your side.',
   },
   {
-    title: 'Build or onboard',
-    body: 'Delivery in short cycles with review points. For BPO work this is process documentation, system access and a supervised pilot before volume.',
+    title: 'Build and integrate',
+    body: 'Delivery in short cycles with review points, from prototype to deployment. Robotics and monitoring work includes the integration, controls and test plan around it.',
   },
   {
     title: 'Ongoing support',
-    body: 'Handover, monitoring and a defined support window. Retained work gets a monthly review against the measures agreed at kickoff.',
+    body: 'Handover, evaluation and a defined support window. Retained systems get monitoring against the measures agreed at kickoff.',
   },
 ]
 
@@ -601,7 +463,7 @@ export const principles: ValueProp[] = [
   },
   {
     title: 'Documented handover',
-    body: 'Processes and systems are documented so the work does not depend on one person’s memory, on either side.',
+    body: 'Systems and operating notes are documented so the work does not depend on one person’s memory, on either side.',
   },
 ]
 
@@ -609,13 +471,15 @@ export const principles: ValueProp[] = [
 /* Navigation (spec §3.2)                                                      */
 /* -------------------------------------------------------------------------- */
 
-export const navMenus: Record<'future-tech' | 'bpo', NavMenu> = {
-  'future-tech': {
-    label: 'AI & Future Tech',
+export const navMenus: Record<'ai-technology' | 'robotics-chips', NavMenu> = {
+  'ai-technology': {
+    label: 'AI & Technology',
     href: '/future-tech',
+    railLabel: 'AI-first engineering',
+    summary: 'AI · generative AI · agents · automation · software',
     columns: [
       {
-        title: 'AI & intelligent systems',
+        title: 'Intelligence',
         items: [
           {
             name: 'Artificial Intelligence & Generative AI',
@@ -628,14 +492,9 @@ export const navMenus: Record<'future-tech' | 'bpo', NavMenu> = {
             description: 'Multi-step agents with review points',
           },
           {
-            name: 'Robotics & Humanoid Technology',
-            href: '/future-tech#robotics',
-            description: 'Humanoid, service and industrial systems',
-          },
-          {
-            name: 'Chips, Robotics & AI Surveillance',
-            href: '/future-tech#chips-robotics-ai-surveillance',
-            description: 'Chips · Robot Chips · Robots · AI Surveillance',
+            name: 'AI & Automation',
+            href: '/future-tech/ai-automation',
+            description: 'Agents, document AI, voice, workflow',
           },
           {
             name: 'AGI & Future Intelligence',
@@ -645,7 +504,7 @@ export const navMenus: Record<'future-tech' | 'bpo', NavMenu> = {
         ],
       },
       {
-        title: 'Software & emerging tech',
+        title: 'Software & systems',
         items: [
           {
             name: 'Web Development & Digital Solutions',
@@ -665,74 +524,54 @@ export const navMenus: Record<'future-tech' | 'bpo', NavMenu> = {
         ],
       },
     ],
-    footer: { label: 'AI & Future Tech overview', href: '/future-tech' },
+    footer: { label: 'AI & Technology overview', href: '/future-tech' },
   },
-  bpo: {
-    label: 'BPO & Professional Services',
-    href: '/bpo',
+  'robotics-chips': {
+    label: 'Robotics & Chips',
+    href: '/future-tech#chips-robotics-ai-surveillance',
+    railLabel: 'Applied systems',
+    summary: 'Robots · robot chips · chips · surveillance',
     columns: [
       {
-        title: 'Healthcare & insurance',
+        title: 'Robotics',
         items: [
           {
-            name: 'Medical Billing & Revenue Cycle Management',
-            href: '/bpo#medical-billing',
-            description: 'Coding, claims, denials, posting',
+            name: 'Robotics & Humanoid Technology',
+            href: '/future-tech#robotics',
+            description: 'Humanoid, service and industrial systems',
           },
           {
-            name: 'Durable Medical Equipment (DME)',
-            href: '/bpo#dme',
-            description: 'Intake, documentation, resupply',
+            name: 'Robots',
+            href: '/future-tech#robots',
+            description: 'Intelligent and autonomous robotic systems',
           },
           {
-            name: 'Medicare & Health Insurance Support',
-            href: '/bpo#medicare-insurance',
-            description: 'Authorisations and benefits checks',
-          },
-          {
-            name: 'Healthcare Staffing & Physician Recruitment',
-            href: '/bpo#healthcare-staffing',
-            description: 'Physicians, nurses, telehealth',
-          },
-          {
-            name: 'Auto Insurance BPO',
-            href: '/bpo#auto-insurance',
-            description: 'Policy admin and claims support',
+            name: 'Robot Chips',
+            href: '/future-tech#robot-chips',
+            description: 'Robotic processors and controllers',
           },
         ],
       },
       {
-        title: 'Business operations',
+        title: 'Chips & monitoring',
         items: [
           {
-            name: 'Real Estate BPO',
-            href: '/bpo#real-estate',
-            description: 'VAs, listings, transaction coordination',
+            name: 'Chips',
+            href: '/future-tech#chips',
+            description: 'AI chips and semiconductor technology',
           },
           {
-            name: 'General Business Outsourcing',
-            href: '/bpo#general-outsourcing',
-            description: 'Support, data entry, admin',
-          },
-          {
-            name: 'Financial & Accounting Support',
-            href: '/bpo#finance-accounting',
-            description: 'Bookkeeping, AP/AR, payroll support',
-          },
-          {
-            name: 'E-commerce Support',
-            href: '/bpo#ecommerce-support',
-            description: 'Orders, listings, marketplaces',
-          },
-          {
-            name: 'Final Expense Services',
-            href: '/bpo#final-expense',
-            description: 'Administrative support only',
+            name: 'AI Surveillance',
+            href: '/future-tech#ai-surveillance',
+            description: 'Intelligent monitoring, security and computer vision',
           },
         ],
       },
     ],
-    footer: { label: 'BPO & Professional Services overview', href: '/bpo' },
+    footer: {
+      label: 'Robotics & Chips overview',
+      href: '/future-tech#chips-robotics-ai-surveillance',
+    },
   },
 }
 
@@ -764,7 +603,7 @@ export const aiUseCases: UseCase[] = [
     id: 'rag',
     title: 'RAG & document intelligence',
     description:
-      'Answers and extracted fields grounded in your own documents, with the source shown. Most useful where staff spend the day searching policies, contracts, claims or records.',
+      'Answers and extracted fields grounded in your own documents, with the source shown. Most useful where teams spend the day searching policies, contracts, manuals or records.',
     bullets: [
       'Retrieval over your documents, not the open web',
       'Citations back to the source passage',
@@ -821,7 +660,7 @@ export const aiBuildPrinciples: ValueProp[] = [
   },
   {
     title: 'Human review where it matters',
-    body: 'Approval gates on anything financial, clinical or irreversible, with a person accountable for the decision.',
+    body: 'Approval gates on anything regulated, high-impact or irreversible, with a person accountable for the decision.',
   },
   {
     title: 'Monitoring after launch',
@@ -891,102 +730,6 @@ export const webServices: WebService[] = [
       'Scheduled reports and alerts',
       'Audit trail for changes',
       'Documentation and admin training',
-    ],
-  },
-]
-
-export type HealthcareTab = {
-  id: string
-  label: string
-  title: string
-  intro: string
-  handles: string[]
-  needs: string[]
-}
-
-export const healthcareDeepDive: HealthcareTab[] = [
-  {
-    id: 'medical-billing',
-    label: 'Medical billing & RCM',
-    title: 'Medical Billing & Revenue Cycle Management',
-    intro:
-      'Billing support for practices and billing companies: coding, claim submission, payer follow-up, denial management and posting, run inside your practice management system.',
-    handles: [
-      'Medical coding and charge entry',
-      'Claims submission and clearinghouse rejections',
-      'Insurance follow-up and appeals',
-      'Denial management with root-cause notes',
-      'Payment posting and reconciliation',
-      'Aging analysis and RCM reporting',
-    ],
-    needs: [
-      'Access to your practice management or EHR system',
-      'Payer list and current fee schedules',
-      'Recent denial and aging reports',
-      'A named escalation contact for clinical questions',
-    ],
-  },
-  {
-    id: 'dme',
-    label: 'DME services',
-    title: 'Durable Medical Equipment (DME) Services',
-    intro:
-      'Order intake through resupply for DME suppliers, with documentation collected and verified before it becomes a claim problem.',
-    handles: [
-      'DME billing and claim preparation',
-      'Order intake and qualification',
-      'Documentation collection and management',
-      'Eligibility and benefits verification',
-      'Resupply coordination and patient reminders',
-      'Patient and referral-source customer support',
-    ],
-    needs: [
-      'Access to your DME billing platform',
-      'Product and HCPCS reference data',
-      'Payer-specific documentation requirements',
-      'Resupply schedule rules',
-    ],
-  },
-  {
-    id: 'medicare',
-    label: 'Medicare & insurance support',
-    title: 'Medicare & Health Insurance Support',
-    intro:
-      'Administrative support for Medicare and commercial insurance workflows — prior authorisations, benefits checks and member-facing support — handled to your scripts and escalation rules.',
-    handles: [
-      'Medicare administrative support',
-      'Prior authorization coordination',
-      'Insurance and benefits verification',
-      'Referral and authorisation tracking',
-      'Member and patient support',
-      'Documentation follow-up with providers',
-    ],
-    needs: [
-      'Payer portals and eligibility tools',
-      'Approved scripts and an escalation matrix',
-      'Service-level expectations by request type',
-      'Compliance requirements supplied in writing',
-    ],
-  },
-  {
-    id: 'staffing',
-    label: 'Healthcare staffing',
-    title: 'Healthcare Staffing & Physician Recruitment',
-    intro:
-      'Recruitment and staffing support for providers, telehealth organisations and staffing firms — sourcing, screening, scheduling and the credentialing paperwork around it.',
-    handles: [
-      'Physician and specialist recruitment',
-      'Telehealth staffing support',
-      'Locum tenens recruitment',
-      'Nurse and allied health recruitment',
-      'Medical virtual assistants',
-      'Credentialing and onboarding coordination',
-    ],
-    needs: [
-      'Role profiles and approved rate ranges',
-      'ATS access or a shared tracking sheet',
-      'Interview and approval workflow',
-      'Credentialing checklist and requirements',
     ],
   },
 ]

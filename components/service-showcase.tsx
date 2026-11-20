@@ -6,8 +6,10 @@ import { Icon } from '@/components/icon'
 import type { FlagshipService } from '@/lib/content'
 import { cn } from '@/lib/utils'
 
-function divisionOf(href: string): 'AI & Future Tech' | 'BPO' {
-  return href.startsWith('/bpo') ? 'BPO' : 'AI & Future Tech'
+function technologyAreaOf(href: string): 'AI & Technology' | 'Robotics & Chips' {
+  return /#(robots|robot-chips|chips|ai-surveillance|robotics)$/.test(href)
+    ? 'Robotics & Chips'
+    : 'AI & Technology'
 }
 
 /**
@@ -60,7 +62,7 @@ export function ServiceShowcase({ items }: { items: FlagshipService[] }) {
                     </span>
                   </span>
                   <span className="hidden shrink-0 text-[10.5px] text-slate-muted/60 sm:block">
-                    {divisionOf(item.href)}
+                    {technologyAreaOf(item.href)}
                   </span>
                 </Link>
               </li>
@@ -75,7 +77,7 @@ export function ServiceShowcase({ items }: { items: FlagshipService[] }) {
             <div className="relative overflow-hidden border-b border-hairline-light p-7">
               <div aria-hidden className="grid-field-light absolute inset-0 opacity-70" />
               <div className="relative flex items-center justify-between">
-                <span className="chip chip-light">{divisionOf(current.href)}</span>
+                <span className="chip chip-light">{technologyAreaOf(current.href)}</span>
                 <span className="text-[11px] tabular-nums text-slate-muted/60">
                   {String(active + 1).padStart(2, '0')} / {String(items.length).padStart(2, '0')}
                 </span>

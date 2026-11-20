@@ -2,20 +2,32 @@ import Link from 'next/link'
 import { Logo } from '@/components/logo'
 import { Container } from '@/components/ui/container'
 import { MetalRule } from '@/components/ui/metal-rule'
-import { bpoCategories, futureTechCategories } from '@/lib/content'
+import { chipsRoboticsServices, futureTechCategories } from '@/lib/content'
 import { contactEmail } from '@/lib/site'
 
-const futureTechLinks = [
-  ...futureTechCategories.map((category) => ({
-    label: category.name,
-    href: `/future-tech#${category.id}`,
-  })),
-  { label: 'AI & Future Tech overview', href: '/future-tech' },
+const aiLinks = [
+  ...futureTechCategories
+    .filter(
+      (category) =>
+        category.id !== 'robotics' && category.id !== 'chips-robotics-ai-surveillance',
+    )
+    .map((category) => ({
+      label: category.name,
+      href: `/future-tech#${category.id}`,
+    })),
+  { label: 'AI & Technology overview', href: '/future-tech' },
 ]
 
-const bpoLinks = [
-  ...bpoCategories.map((category) => ({ label: category.name, href: `/bpo#${category.id}` })),
-  { label: 'All BPO services', href: '/bpo' },
+const roboticsLinks = [
+  { label: 'Robotics & Humanoid Technology', href: '/future-tech#robotics' },
+  ...chipsRoboticsServices.map((service) => ({
+    label: service.name,
+    href: `/future-tech#${service.id}`,
+  })),
+  {
+    label: 'Robotics & Chips overview',
+    href: '/future-tech#chips-robotics-ai-surveillance',
+  },
 ]
 
 const companyLinks = [
@@ -71,15 +83,15 @@ export function SiteFooter() {
           <div>
             <Logo tone="dark" />
             <p className="mt-5 max-w-[46ch] text-[13.5px] leading-relaxed text-slate-muted">
-              Technology we build. Operations we run. Two divisions, one company, and a direct line
-              to the people doing the work.
+              Technology we build. Intelligence we engineer. AI, robotics, chips and intelligent
+              systems under one roof, with a direct line to the people doing the work.
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-2">
               <span className="chip chip-light">
                 <span aria-hidden className="dot bg-slate/40" />
                 AI-first
               </span>
-              <span className="chip chip-light">Two divisions</span>
+              <span className="chip chip-light">Robotics &amp; Chips</span>
             </div>
           </div>
           <Link
@@ -91,8 +103,8 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          <FooterColumn title="AI & Future Tech" links={futureTechLinks} />
-          <FooterColumn title="BPO & Professional Services" links={bpoLinks} />
+          <FooterColumn title="AI & Technology" links={aiLinks} />
+          <FooterColumn title="Robotics & Chips" links={roboticsLinks} />
           <FooterColumn title="Company" links={companyLinks} />
 
           <div>

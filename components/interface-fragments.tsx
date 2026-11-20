@@ -50,9 +50,9 @@ export function NodeFragment({ className }: { className?: string }) {
 }
 
 const statusRows = [
-  { label: 'Intake', width: '74%' },
-  { label: 'Coding', width: '56%' },
-  { label: 'Posting', width: '34%' },
+  { label: 'Ingest', width: '74%' },
+  { label: 'Retrieve', width: '56%' },
+  { label: 'Review', width: '34%' },
 ]
 
 export function StatusFragment({ className }: { className?: string }) {
@@ -61,7 +61,7 @@ export function StatusFragment({ className }: { className?: string }) {
       <div className="flex items-center justify-between">
         <span className="flex items-center gap-1.5 text-[9.5px] text-silver/55">
           <span aria-hidden className="dot bg-silver/70" />
-          Billing queue
+          Agent run
         </span>
         <span className="text-[8.5px] text-silver/25">illustrative</span>
       </div>
@@ -87,24 +87,24 @@ export function StatusFragment({ className }: { className?: string }) {
   )
 }
 
-export function DivisionFragment({ className }: { className?: string }) {
+export function TechnologyFragment({ className }: { className?: string }) {
   return (
     <div aria-hidden className={cn('fragment w-[238px] rounded-panel px-4 py-3.5', className)}>
-      <p className="text-[9px] text-silver/35">Two divisions</p>
+      <p className="text-[9px] text-silver/35">Technology stack</p>
       <div className="mt-2.5 space-y-2">
         <div className="flex items-baseline justify-between gap-4 border-b border-white/[0.07] pb-2">
-          <span className="text-[11px] text-platinum/90">AI &amp; Future Tech</span>
+          <span className="text-[11px] text-platinum/90">AI &amp; Technology</span>
           <span className="text-[8.5px] text-silver/30">Build</span>
         </div>
         <div className="flex items-baseline justify-between gap-4">
           <span className="max-w-[15ch] text-[11px] leading-snug text-platinum/90">
-            BPO &amp; Professional Services
+            Robotics &amp; Chips
           </span>
-          <span className="text-[8.5px] text-silver/30">Run</span>
+          <span className="text-[8.5px] text-silver/30">Apply</span>
         </div>
       </div>
       <p className="mt-2.5 border-t border-white/[0.07] pt-2 text-[8px] text-silver/25">
-        One partner
+        One company
       </p>
     </div>
   )

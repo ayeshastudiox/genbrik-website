@@ -13,7 +13,7 @@ export type AccordionItem = {
 }
 
 /**
- * Document-like accordion used on the healthcare deep-dive (spec §4.4).
+ * Document-like accordion used on technology service deep-dives (spec §4.4).
  * Native buttons, one panel at a time, content unmounted when closed so hidden
  * links are never tabbable.
  */

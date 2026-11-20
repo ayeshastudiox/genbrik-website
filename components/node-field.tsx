@@ -12,7 +12,7 @@ import { useEffect, useRef } from 'react'
 import { cn } from '@/lib/utils'
 
 /**
- * Decorative node/edge field for AI & Future Tech heroes and section headers.
+ * Decorative node/edge field for AI & Technology heroes and section headers.
  * Static geometry, CSS-only pulses, and a very small pointer parallax.
  * Node count is reduced on small screens.
  */

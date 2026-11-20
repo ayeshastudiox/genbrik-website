@@ -9,8 +9,8 @@ import type { Resolver } from 'react-hook-form'
 import { MetalSheen, buttonClassName } from '@/components/ui/button'
 import {
   contactSchema,
-  divisionLabels,
-  divisionValues,
+  focusLabels,
+  focusValues,
   type ContactApiError,
   type ContactApiResponse,
   type ContactFormValues,
@@ -64,7 +64,7 @@ export function ContactForm() {
       company: '',
       email: '',
       phone: '',
-      division: '',
+      focus: '',
       message: '',
       website: '',
     },
@@ -256,25 +256,25 @@ export function ContactForm() {
 
         <fieldset className="mt-5">
           <legend className="text-[13px] font-medium text-slate">
-            Which division are you interested in?
+            Which area are you interested in?
           </legend>
           <div className="mt-2.5 grid gap-2 sm:grid-cols-3">
-            {divisionValues.map((value) => (
+            {focusValues.map((value) => (
               <label key={value} className="relative block cursor-pointer">
                 <input
                   type="radio"
                   value={value}
                   className="peer sr-only"
-                  aria-describedby={errors.division ? 'division-error' : undefined}
-                  {...register('division')}
+                  aria-describedby={errors.focus ? 'focus-error' : undefined}
+                  {...register('focus')}
                 />
                 <span className="flex h-full min-h-[46px] items-center justify-center rounded-btn border border-hairline-light bg-white px-3 py-2.5 text-center text-[13px] leading-snug text-slate-muted transition-colors peer-checked:border-slate peer-checked:bg-paper peer-checked:text-slate peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-slate">
-                  {divisionLabels[value]}
+                  {focusLabels[value]}
                 </span>
               </label>
             ))}
           </div>
-          <FieldError id="division-error" message={errors.division?.message} />
+          <FieldError id="focus-error" message={errors.focus?.message} />
         </fieldset>
 
         <div className="mt-5">
@@ -287,7 +287,7 @@ export function ContactForm() {
             required
             aria-invalid={errors.message ? true : undefined}
             aria-describedby={errors.message ? 'message-error' : 'message-hint'}
-            placeholder="What needs building or running? Include the systems involved if you know them."
+            placeholder="What do you want to build? Include the systems involved if you know them."
             className={cn(
               inputBase,
               'min-h-[160px] resize-y leading-relaxed',
@@ -299,7 +299,7 @@ export function ContactForm() {
             <FieldError id="message-error" message={errors.message.message} />
           ) : (
             <p id="message-hint" className="mt-1.5 text-[12px] text-slate-muted/70">
-              At least 20 characters. No confidential patient or client data, please.
+              At least 20 characters. No confidential data, please.
             </p>
           )}
         </div>

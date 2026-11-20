@@ -17,8 +17,8 @@ const WIDTH = 132
 const HEIGHT = 56
 
 const graphNodes: GraphNode[] = [
-  { id: 'intake', label: 'Intake', sub: 'email · form · fax', x: 16, y: 162 },
-  { id: 'retrieve', label: 'Retrieve', sub: 'policy library', x: 196, y: 70 },
+  { id: 'intake', label: 'Intake', sub: 'email · form · chat', x: 16, y: 162 },
+  { id: 'retrieve', label: 'Retrieve', sub: 'knowledge library', x: 196, y: 70 },
   { id: 'reason', label: 'Reason', sub: 'model + rules', x: 196, y: 254 },
   { id: 'act', label: 'Act', sub: 'update system', x: 376, y: 162 },
   { id: 'review', label: 'Human review', sub: 'approve or edit', x: 556, y: 70 },

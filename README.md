@@ -1,14 +1,15 @@
 # GENBRIK — official website
 
 Next.js (App Router) + TypeScript + Tailwind CSS implementation of the GENBRIK
-website: an AI-first technology company with two divisions, one brand, one
-codebase.
+website: an AI-first technology company focused on intelligent systems,
+robotics, chips and applied automation.
 
-- **AI & Future Tech** — generative AI, AI agents, intelligent automation,
-  software, web, robotics, AGI and emerging technology.
-- **BPO & Professional Services** — medical billing, DME, Medicare/insurance
-  support, healthcare staffing, auto insurance, real estate, finance,
-  e-commerce, general outsourcing, final expense admin support.
+- **AI & Technology** — generative AI, AI agents, intelligent automation,
+  software, web, AGI and emerging technology.
+- **Robotics & Chips** — robots, robot chips, AI chips, semiconductor
+  technology, robotic processors and controllers.
+- **AI Surveillance** — intelligent monitoring, security systems, computer
+  vision and object detection.
 
 ### Supplied assets
 
@@ -120,13 +121,13 @@ npm run typecheck
 
 ### Navigation
 - [ ] Sticky nav stays glassy over both dark and light pages.
-- [ ] `Future Tech` and `BPO & Professional Services` open the mega-menu on
-      hover **and** on click; `Esc` closes; clicking outside closes.
+- [ ] `AI & Technology` and `Robotics & Chips` open the mega-menu on hover
+      **and** on click; `Esc` closes; clicking outside closes.
 - [ ] Tab through the mega-menu: every link is reachable and focus is visible.
 - [ ] Active route shows an underline (no colour change).
-- [ ] At < 1024px the hamburger opens the full-screen overlay, the divisions
-      expand as accordions, body scroll is locked, `Esc` and the close button
-      both dismiss it, and focus returns to the hamburger.
+- [ ] At < 1024px the hamburger opens the full-screen overlay, the technology
+      menus expand as accordions, body scroll is locked, `Esc` and the close
+      button both dismiss it, and focus returns to the hamburger.
 
 ### Pages
 - [ ] `/` hero: move the mouse — the metallic sweep follows the cursor on
@@ -137,15 +138,12 @@ npm run typecheck
       hover, caption says it is illustrative.
 - [ ] `/future-tech/web-software` — light, conventional service menu with
       “What’s included” lists.
-- [ ] `/bpo` — sticky in-page index on desktop, all ten categories, Final
-      Expense scope callout.
-- [ ] `/bpo/healthcare` — accordion by category, compliance panel shows
-      `[CONFIRM: ...]` placeholders (no certification claims).
-- [ ] `/industries` — rows + division badges.
+- [ ] `/industries` — technology rows with AI, robotics, chips and surveillance
+      focus badges.
 - [ ] `/privacy`, `/terms` — draft banner, `noindex`.
 
 ### Contact form (`/contact`)
-- [ ] Submit empty → inline errors on name, email, message, division.
+- [ ] Submit empty → inline errors on name, email, message, area.
 - [ ] Bad email → “Enter a valid email address.”
 - [ ] Message under 20 characters → inline error.
 - [ ] Valid submit → success panel, heading focused, “what happens next”.
@@ -159,7 +157,7 @@ npm run typecheck
 ```bash
 curl -X POST http://localhost:3000/api/contact \
   -H "Content-Type: application/json" \
-  -d "{\"name\":\"Test\",\"email\":\"test@example.com\",\"message\":\"short\",\"division\":\"future-tech\",\"company\":\"\",\"phone\":\"\",\"website\":\"\"}"
+  -d "{\"name\":\"Test\",\"email\":\"test@example.com\",\"message\":\"short\",\"focus\":\"ai-technology\",\"company\":\"\",\"phone\":\"\",\"website\":\"\"}"
 ```
 
 ### Responsive
@@ -173,11 +171,11 @@ curl -X POST http://localhost:3000/api/contact \
 - [ ] OS “reduce motion” enabled: no cursor-follow sweep, no entrance
       choreography, no route bar, no pulsing nodes; content stays visible.
 - [ ] One `<h1>` per page; headings descend in order.
-- [ ] Lighthouse: Performance ≥ 90 on `/`, `/bpo`, `/contact` (production build,
-      mobile preset).
+- [ ] Lighthouse: Performance ≥ 90 on `/`, `/future-tech`, `/contact`
+      (production build, mobile preset).
 
 ### SEO
-- [ ] `/sitemap.xml` lists the nine public routes.
+- [ ] `/sitemap.xml` lists the seven public routes.
 - [ ] `/robots.txt` allows crawling and disallows `/api/`.
 - [ ] Each page has a unique `<title>`, description, canonical and OG tags.
 - [ ] `/opengraph-image` renders the 1200×630 card.
@@ -194,8 +192,6 @@ app/
   future-tech/page.tsx
   future-tech/ai-automation/page.tsx
   future-tech/web-software/page.tsx
-  bpo/page.tsx
-  bpo/healthcare/page.tsx
   industries/page.tsx
   contact/page.tsx
   privacy/page.tsx                placeholder, flagged for legal review
@@ -211,8 +207,7 @@ components/
   atmosphere.tsx                  field + perspective grid + vignette + grain + lights
   page-hero.tsx                   shared interior-page hero (dark / light)
   hero-core.tsx                   banded chrome core, tilt, fragments
-  interface-fragments.tsx         node / status / division glass fragments
-  ops-dashboard.tsx               illustrative BPO interface panels
+  interface-fragments.tsx         node / status / technology glass fragments
   cursor-glow.tsx                 pointer bloom on dark heroes only
   metal-sweep.tsx                 cursor-reactive specular metal
   spotlight.tsx                   pointer-following glass highlight
@@ -245,10 +240,8 @@ specification. Search the codebase for `[CONFIRM:` to find all of them.
 |---|---|
 | Legal entity, registration, founded, headcount, regions | `lib/content.ts` → `companyFacts`, shown on `/about` |
 | Team / leadership bios | `/about` |
-| HIPAA status, SOC 2 / ISO, billing-staff licensing, data residency | `/bpo/healthcare` |
-| Final Expense exact scope and licensing | `/bpo#final-expense` |
 | Data-processing terms and AI compliance | `/future-tech/ai-automation` |
-| Research collaboration / press contact | `/future-tech#direction` |
+| Research collaboration / press contact | `/future-tech#agi` |
 | Client references / case studies | `/industries` |
 | Legal review, governing law, effective dates | `/privacy`, `/terms` |
 
@@ -288,10 +281,10 @@ existing offering.
 **Dark chrome, engineered light.** The palette is unchanged from the master
 spec; the material language is new. Three rules drive every page:
 
-1. **One metal, two tempers.** Future Tech is a dark instrument field — chrome
-   core, node mesh, glass readouts, asymmetric splits. BPO is a platinum ledger
-   — structured rows, tabular rhythm, paper surfaces on ink. Same type, same
-   palette, different temperature.
+1. **One metal, one company.** The site is a dark instrument field — chrome
+   core, node mesh, glass readouts and asymmetric splits — with platinum paper
+   surfaces reserved for service indexes and documentation. Same type, same
+   palette, one AI-first identity.
 2. **Depth over decoration.** Every section is built from layers: gradient
    field → engineering grid → light pool → grain → content. Large surfaces use
    18–32px radii and a 1px top light so panels read as physical glass rather
@@ -323,7 +316,7 @@ consume theme values, never raw hex codes.
 - `--ink`, `--void`, `--graphite`, `--steel`, `--silver`, `--platinum` for dark.
 - `--paper`, `--slate`, `--slate-muted` for light.
 - General Sans for display, Archivo for body/UI.
-- The metal sweep appears only in the home hero, the Future Tech hero, the
+- The metal sweep appears only in the home hero, the AI & Technology hero, the
   primary button hover state and major section dividers.
 - Glass is used for the nav, the floating hero fragments, the contact form and
   hovered panels.
@@ -340,13 +333,11 @@ The addendum in the master specification (§2.11) is implemented as:
   grain and two asymmetric volumetric lights.
 - **Hero object** — banded brushed-metal shading, a rim light, cursor tilt plus
   parallax, continuous idle band rotation and varied glowing orbit particles.
-- **Fragments** — three floating interface panels on Home (agent flow, billing
-  queue, division index) and one on Future Tech; each shows real category
-  content and is labelled as an example.
-- **Future Tech** — scroll- and pointer-reactive node field behind the section
+- **Fragments** — three floating interface panels on Home (agent flow, agent
+  run, technology stack); each shows real category content and is labelled as an
+  example. The AI & Technology hero carries the capability stack instead.
+- **AI & Technology** — scroll- and pointer-reactive node field behind the section
   headers on the overview and AI pages.
-- **BPO** — an illustrative glass dashboard beside the four healthcare
-  categories on `/bpo`, and inside each healthcare accordion panel.
 - **Contact** — the form is a single elevated glass panel with a metal edge and
   animated success/error states.
 - **Global** — a thin animated metal line under the nav on scroll, and a cursor

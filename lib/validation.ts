@@ -6,13 +6,13 @@ import { z } from 'zod'
  * weaker copy of the client rules (spec §5.3).
  */
 
-export const divisionValues = ['future-tech', 'bpo', 'not-sure'] as const
+export const focusValues = ['ai-technology', 'robotics-chips', 'not-sure'] as const
 
-export type Division = (typeof divisionValues)[number]
+export type Focus = (typeof focusValues)[number]
 
-export const divisionLabels: Record<Division, string> = {
-  'future-tech': 'AI & Future Tech',
-  bpo: 'BPO & Professional Services',
+export const focusLabels: Record<Focus, string> = {
+  'ai-technology': 'AI & Technology',
+  'robotics-chips': 'Robotics & Chips',
   'not-sure': 'Not sure yet',
 }
 
@@ -30,7 +30,7 @@ export const contactSchema = z.object({
     .max(200, 'That email address is too long.')
     .email('Enter a valid email address.'),
   phone: z.string().trim().max(40, 'That phone number is longer than we can accept.'),
-  division: z.enum(divisionValues, {
+  focus: z.enum(focusValues, {
     errorMap: () => ({ message: 'Choose one option.' }),
   }),
   message: z
@@ -46,15 +46,16 @@ export const contactSchema = z.object({
 /** Validated payload produced by the schema (server-side shape). */
 export type ContactSubmission = z.infer<typeof contactSchema>
 
-/** Browser form state — division starts empty so nobody is pre-selected. */
-export type ContactFormValues = Omit<ContactSubmission, 'division'> & {
-  division: Division | ''
+/** Browser form state — focus starts empty so nobody is pre-selected. */
+export type ContactFormValues = Omit<ContactSubmission, 'focus'> & {
+  focus: Focus | ''
 }
 
 export type ContactApiError =
   | 'validation'
   | 'rate_limited'
   | 'invalid_json'
+  | 'method_not_allowed'
   | 'not_configured'
   | 'delivery_failed'
   | 'server_error'

@@ -29,8 +29,8 @@ export default function NotFound() {
           That page is not here.
         </h1>
         <p className="mt-5 max-w-[54ch] text-[15px] leading-relaxed text-silver/55">
-          The link may be out of date. Both divisions are one click away, or you can tell us what
-          you were looking for.
+          The link may be out of date. Both technology areas are one click away, or you can tell us
+          what you were looking for.
         </p>
 
         <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -44,10 +44,13 @@ export default function NotFound() {
 
         <div className="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-white/10 pt-6 text-[12.5px] text-silver/50">
           <Link href="/future-tech" className="transition-colors hover:text-platinum">
-            AI &amp; Future Tech
+            AI &amp; Technology
           </Link>
-          <Link href="/bpo" className="transition-colors hover:text-platinum">
-            BPO &amp; Professional Services
+          <Link
+            href="/future-tech#chips-robotics-ai-surveillance"
+            className="transition-colors hover:text-platinum"
+          >
+            Robotics &amp; Chips
           </Link>
           <Link href="/industries" className="transition-colors hover:text-platinum">
             Industries

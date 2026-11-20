@@ -1,6 +1,6 @@
 import { Resend } from 'resend'
 import type { ContactSubmission } from '@/lib/validation'
-import { divisionLabels } from '@/lib/validation'
+import { focusLabels } from '@/lib/validation'
 
 /**
  * Transactional email delivery (spec §5.3).
@@ -27,7 +27,7 @@ function buildBody(submission: ContactSubmission): string {
     `Company: ${oneLine(submission.company) || '—'}`,
     `Email: ${oneLine(submission.email)}`,
     `Phone: ${oneLine(submission.phone) || '—'}`,
-    `Division: ${divisionLabels[submission.division]}`,
+    `Area: ${focusLabels[submission.focus]}`,
     '',
     'Message:',
     submission.message,

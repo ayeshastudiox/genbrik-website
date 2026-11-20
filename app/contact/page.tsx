@@ -9,14 +9,14 @@ import { Section } from '@/components/ui/section'
 export const metadata: Metadata = buildMetadata({
   title: 'Contact',
   description:
-    'Request a consultation with GENBRIK. Tell us what needs building or running — AI & Future Tech or BPO & Professional Services — and we will reply with next steps.',
+    'Request a consultation with GENBRIK. Tell us what you want to build — AI, software, robotics, chips or AI surveillance — and we will reply with next steps.',
   path: '/contact',
 })
 
 const nextSteps = [
   {
     title: 'We read it properly',
-    body: 'Your message goes to the division that fits, not a shared sales queue.',
+    body: 'Your message goes to the engineering team that fits, not a shared sales queue.',
   },
   {
     title: 'A short call',
@@ -34,7 +34,7 @@ export default function ContactPage() {
       <PageHero
         compact
         title={<>Request a consultation.</>}
-        intro="Tell us what needs building or running. We reply with next steps, not a brochure."
+        intro="Tell us what you want to build. We reply with next steps, not a brochure."
         meta={
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <a
@@ -102,8 +102,8 @@ export default function ContactPage() {
               </div>
 
               <p className="mt-4 max-w-[38ch] text-[11px] leading-relaxed text-slate-muted/80">
-                For healthcare engagements, tell us which systems you use — EHR, practice
-                management, clearinghouse — and your payer mix. Please do not include patient data.
+                For robotics, chips or surveillance work, tell us about the environment, the systems
+                involved and the constraints. Please do not include confidential data.
               </p>
             </aside>
           </div>

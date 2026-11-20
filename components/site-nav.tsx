@@ -13,12 +13,16 @@ import { cn } from '@/lib/utils'
 type MenuKey = keyof typeof navMenus
 
 const primaryLinks = [
+  { label: 'AI Surveillance', href: '/future-tech#ai-surveillance' },
   { label: 'About', href: '/about' },
   { label: 'Industries', href: '/industries' },
   { label: 'Contact', href: '/contact' },
 ]
 
-function isActive(pathname: string, href: string): boolean {
+function isActive(pathname: string, href: string, hash: string): boolean {
+  const [base, target] = href.split('#')
+
+  if (target) return pathname === base && hash === `#${target}`
   if (href === '/') return pathname === '/'
   return pathname === href || pathname.startsWith(`${href}/`)
 }
@@ -26,9 +30,9 @@ function isActive(pathname: string, href: string): boolean {
 /**
  * Navigation (spec §3.2, refined).
  *
- * A floating glass capsule inside a sticky transparent header. Each division
- * opens a centred glass panel with two link columns and a consultation rail.
- * Mobile is a full-screen overlay with expandable divisions, scroll lock, focus
+ * A floating glass capsule inside a sticky transparent header. Each technology
+ * menu opens a centred glass panel with two link columns and a consultation rail.
+ * Mobile is a full-screen overlay with expandable technology menus, scroll lock, focus
  * trap and focus restore. Active routes use a dot, never a colour swap.
  */
 export function SiteNav() {
@@ -37,10 +41,18 @@ export function SiteNav() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [mobileSection, setMobileSection] = useState<MenuKey | null>(null)
   const [scrolled, setScrolled] = useState(false)
+  const [activeHash, setActiveHash] = useState('')
 
   const headerRef = useRef<HTMLElement | null>(null)
   const overlayRef = useRef<HTMLDivElement | null>(null)
   const closeButtonRef = useRef<HTMLButtonElement | null>(null)
+
+  useEffect(() => {
+    const syncHash = () => setActiveHash(window.location.hash)
+    syncHash()
+    window.addEventListener('hashchange', syncHash)
+    return () => window.removeEventListener('hashchange', syncHash)
+  }, [pathname])
 
   useEffect(() => {
     setOpenMenu(null)
@@ -131,7 +143,7 @@ export function SiteNav() {
 
   const navLinkClass = (active: boolean) =>
     cn(
-      'relative rounded-full px-3.5 py-2 text-[13px] font-medium transition-colors duration-300',
+      'relative rounded-full px-2.5 py-2 text-[12.5px] font-medium transition-colors duration-300 xl:px-3.5 xl:text-[13px]',
       active ? 'text-platinum' : 'text-silver/65 hover:text-platinum',
     )
 
@@ -190,7 +202,7 @@ export function SiteNav() {
             <nav aria-label="Primary" className="hidden items-center gap-0.5 lg:flex">
               {(Object.keys(navMenus) as MenuKey[]).map((key) => {
                 const menu = navMenus[key]
-                const active = isActive(pathname, menu.href)
+                const active = isActive(pathname, menu.href, activeHash)
                 const expanded = openMenu === key
                 return (
                   <button
@@ -222,7 +234,7 @@ export function SiteNav() {
               })}
 
               {primaryLinks.map((link) => {
-                const active = isActive(pathname, link.href)
+                const active = isActive(pathname, link.href, activeHash)
                 return (
                   <Link key={link.href} href={link.href} className={navLinkClass(active)}>
                     {link.label}
@@ -313,10 +325,11 @@ export function SiteNav() {
                 <div className="col-span-4 border-l border-white/10 bg-white/[0.03] p-6">
                   <span className="chip">
                     <span aria-hidden className="dot bg-platinum/70" />
-                    {openMenu === 'future-tech' ? 'AI-first engineering' : 'Operations partner'}
+                    {navMenus[openMenu].railLabel}
                   </span>
                   <p className="mt-4 max-w-[26ch] text-[12.5px] leading-relaxed text-silver/70">
-                    Not sure which division you need? A short call is usually enough to work it out.
+                    Not sure which technology you need? A short call is usually enough to work it
+                    out.
                   </p>
                   <Link
                     href="/contact"
@@ -340,11 +353,7 @@ export function SiteNav() {
 
               <div className="relative flex items-center justify-between border-t border-white/10 px-7 py-3 text-[10.5px] text-silver/50">
                 <span>{navMenus[openMenu].label}</span>
-                <span>
-                  {openMenu === 'future-tech'
-                    ? 'AI · agents · software · chips · robotics · surveillance'
-                    : 'Healthcare · insurance · real estate · back office'}
-                </span>
+                <span>{navMenus[openMenu].summary}</span>
               </div>
             </div>
           </div>
@@ -383,7 +392,7 @@ export function SiteNav() {
             {(Object.keys(navMenus) as MenuKey[]).map((key) => {
               const menu = navMenus[key]
               const expanded = mobileSection === key
-              const active = isActive(pathname, menu.href)
+              const active = isActive(pathname, menu.href, activeHash)
               const items = menu.columns.flatMap((column) => column.items)
               return (
                 <div key={key} className="border-b border-white/[0.07]">
@@ -441,7 +450,7 @@ export function SiteNav() {
 
             <nav aria-label="Company" className="mt-6 space-y-1">
               {primaryLinks.map((link) => {
-                const active = isActive(pathname, link.href)
+                const active = isActive(pathname, link.href, activeHash)
                 return (
                   <Link
                     key={link.href}

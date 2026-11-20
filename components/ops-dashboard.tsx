@@ -1,73 +1,61 @@
 import { cn } from '@/lib/utils'
 
 /**
- * Illustrative "glass dashboard" fragment for BPO service categories
- * (spec §2.11.D). It abstracts the interface we work in — claim status, order
- * intake, authorisations, pipelines — without showing invented numbers or live
- * metrics. Every panel is explicitly labelled as an example.
+ * Illustrative "glass dashboard" fragment for technology pages. It abstracts a
+ * system interface — AI runs, robot cells, compute pipelines or monitoring —
+ * without showing invented numbers or live metrics. Every panel is explicitly
+ * labelled as an example.
  */
 
-export type OpsVariant = 'billing' | 'dme' | 'insurance' | 'staffing' | 'auto' | 'finance'
+export type SystemVariant = 'ai' | 'robotics' | 'chips' | 'surveillance'
 
 const VIEWS: Record<
-  OpsVariant,
+  SystemVariant,
   { title: string; rows: Array<{ label: string; width: string; muted?: boolean }> }
 > = {
-  billing: {
-    title: 'Claim status',
+  ai: {
+    title: 'AI system',
     rows: [
-      { label: 'Submitted', width: '82%' },
-      { label: 'In payer review', width: '58%' },
-      { label: 'Posted', width: '36%', muted: true },
+      { label: 'Ingest', width: '82%' },
+      { label: 'Retrieve', width: '64%' },
+      { label: 'Reason', width: '48%' },
+      { label: 'Human review', width: '30%', muted: true },
     ],
   },
-  dme: {
-    title: 'Order intake',
+  robotics: {
+    title: 'Robot cell',
     rows: [
-      { label: 'Intake', width: '76%' },
-      { label: 'Eligibility', width: '52%' },
-      { label: 'Resupply due', width: '30%', muted: true },
+      { label: 'Sense', width: '78%' },
+      { label: 'Plan', width: '60%' },
+      { label: 'Act', width: '44%' },
+      { label: 'Monitor', width: '28%', muted: true },
     ],
   },
-  insurance: {
-    title: 'Authorisations',
+  chips: {
+    title: 'Compute pipeline',
     rows: [
-      { label: 'Requested', width: '70%' },
-      { label: 'Payer review', width: '48%' },
-      { label: 'Approved', width: '28%', muted: true },
+      { label: 'Compute', width: '80%' },
+      { label: 'Memory', width: '62%' },
+      { label: 'Interconnect', width: '46%' },
+      { label: 'Control', width: '30%', muted: true },
     ],
   },
-  staffing: {
-    title: 'Candidate pipeline',
+  surveillance: {
+    title: 'Monitoring',
     rows: [
-      { label: 'Sourced', width: '80%' },
-      { label: 'Screened', width: '54%' },
-      { label: 'Interview', width: '32%', muted: true },
-    ],
-  },
-  auto: {
-    title: 'Policy admin',
-    rows: [
-      { label: 'New policy', width: '72%' },
-      { label: 'Endorsement', width: '44%' },
-      { label: 'Renewal', width: '26%', muted: true },
-    ],
-  },
-  finance: {
-    title: 'Month-end',
-    rows: [
-      { label: 'Accounts payable', width: '78%' },
-      { label: 'Accounts receivable', width: '56%' },
-      { label: 'Reconciliation', width: '34%', muted: true },
+      { label: 'Detect', width: '76%' },
+      { label: 'Classify', width: '58%' },
+      { label: 'Review', width: '42%' },
+      { label: 'Log', width: '26%', muted: true },
     ],
   },
 }
 
-export function OpsDashboard({
+export function SystemDashboard({
   variant,
   className,
 }: {
-  variant: OpsVariant
+  variant: SystemVariant
   className?: string
 }) {
   const view = VIEWS[variant]

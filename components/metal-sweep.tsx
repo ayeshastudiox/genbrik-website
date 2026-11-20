@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils'
  * Mouse-reactive brushed-metal light sweep — the single "memorable" design move
  * (spec §2.1, §2.2, §2.8).
  *
- * Rendered only inside the Home hero, the AI & Future Tech hero and the primary CTA
+ * Rendered only inside the Home hero, the AI & Technology hero and the primary CTA
  * treatment. The specular highlight follows the cursor on fine-pointer devices;
  * touch devices and reduced-motion users get a slow autoplay drift (or a static
  * gradient when motion is reduced).

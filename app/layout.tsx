@@ -26,7 +26,7 @@ const archivo = Archivo({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'GENBRIK — Technology we build. Operations we run.',
+    default: 'GENBRIK — AI, Technology & Robotics',
     template: '%s | GENBRIK',
   },
   description: siteConfig.description,
@@ -39,14 +39,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     siteName: 'GENBRIK',
-    title: 'GENBRIK — Technology we build. Operations we run.',
+    title: 'GENBRIK — AI, Technology & Robotics',
     description: siteConfig.description,
     url: '/',
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'GENBRIK — Technology we build. Operations we run.',
+    title: 'GENBRIK — AI, Technology & Robotics',
     description: siteConfig.description,
   },
   robots: {

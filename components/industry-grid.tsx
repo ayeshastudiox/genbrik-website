@@ -27,7 +27,7 @@ export function IndustryGrid({ className }: { className?: string }) {
             </span>
           </span>
           <span className="shrink-0 pl-12 text-[10.5px] leading-relaxed text-slate-muted/70 sm:pl-0 sm:pt-1 sm:text-right sm:text-[10px]">
-            {industry.divisions.join(' · ')}
+            {industry.technologies.join(' · ')}
           </span>
         </Link>
       ))}
